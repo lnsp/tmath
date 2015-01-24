@@ -80,7 +80,7 @@ TMath::DOUBLE TMath::sec(DOUBLE x)
 }
 TMath::DOUBLE TMath::arcsec(DOUBLE x)
 {
-	return 0.0; // NOT IMPLEMENTED
+	return acos(1 / x);
 }
 TMath::DOUBLE TMath::sech(DOUBLE x)
 {
@@ -93,7 +93,7 @@ TMath::DOUBLE TMath::cosec(DOUBLE x)
 }
 TMath::DOUBLE TMath::arccsc(DOUBLE x)
 {
-	return 0.0; // NOT IMPLEMENTED
+	return asin(1 / x);
 }
 TMath::DOUBLE TMath::csch(DOUBLE x)
 {
