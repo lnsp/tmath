@@ -33,11 +33,15 @@ namespace TMath {
 	DOUBLE	arccsc(DOUBLE x); // Arkus kosekans
 	DOUBLE	csch(DOUBLE x); // Kosekans hyperbolicus
 
+	DOUBLE	rad(DOUBLE deg);
+	DOUBLE	deg(DOUBLE rad);
+
 	DOUBLE	exp(DOUBLE x);
 	DOUBLE	sqrt(DOUBLE x);
 	DOUBLE	root(DOUBLE x, DOUBLE n);
 	DOUBLE	ln(DOUBLE x);
 	DOUBLE	lg(DOUBLE x);
+	DOUBLE	lb(DOUBLE x);
 	DOUBLE	log(DOUBLE n, DOUBLE y);
 
 	DOUBLE	pow(DOUBLE x, DOUBLE n);

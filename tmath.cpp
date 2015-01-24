@@ -144,9 +144,13 @@ TMath::DOUBLE TMath::lg(DOUBLE x)
 {
 	return ln(x) / ln(10);
 }
+TMath::DOUBLE TMath::lb(DOUBLE x)
+{
+	return ln(x) / ln(2);
+}
 TMath::DOUBLE TMath::log(DOUBLE n, DOUBLE x)
 {
-	return lg(x) / lg(n);
+	return ln(x) / ln(n);
 }
 /* =================================== POWER FUNCTIONS =====================================================*/
 TMath::DOUBLE TMath::pow(DOUBLE x, LONG n)
@@ -179,4 +183,13 @@ TMath::LONG TMath::fac(LONG n) {
 		r *= i;
 	}
 	return r;
+}
+/* ========================================== DEGREE <-> RADIANT ================================*/
+TMath::DOUBLE TMath::rad(DOUBLE deg)
+{
+	return PI / 180 * deg;
+}
+TMath::DOUBLE TMath::deg(DOUBLE rad)
+{
+	return 180 / PI * rad;
 }
