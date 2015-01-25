@@ -40,4 +40,5 @@ You can copy the files directly into your project folder or build a library file
 |`rad(x)`|degrees to radiant|
 |`deg(x)`|radiant to degrees|
 
-Have fun with the library!
+## What is planned?
+- Linear algebra (vectors, matrices)
