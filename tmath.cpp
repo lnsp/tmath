@@ -102,11 +102,17 @@ TMath::DOUBLE TMath::csch(DOUBLE x)
 /* ================================= SECTION: FLOOR, CEIL AND MODULO ======================================== */
 TMath::LONG TMath::floor(DOUBLE x)
 {
-	return LONG(x);
+	if (x < 0)
+		return LONG(x) - 1;
+	else
+		return LONG(x);
 }
 TMath::LONG TMath::ceil(DOUBLE x)
 {
-	return LONG(x) + 1;
+	if (x < 0)
+		return LONG(x);
+	else
+		return LONG(x) + 1;
 }
 TMath::DOUBLE TMath::mod(DOUBLE x, DOUBLE y)
 {
