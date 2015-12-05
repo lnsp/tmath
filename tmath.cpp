@@ -161,6 +161,10 @@ TMath::DOUBLE TMath::log(DOUBLE n, DOUBLE x)
 /* =================================== POWER FUNCTIONS =====================================================*/
 TMath::DOUBLE TMath::pow(DOUBLE x, LONG n)
 {
+	if (n < 0) {
+		return 1 / pow(x, -n);
+	}
+
 	DOUBLE r = 1;
 	for (LONG i = 1; i <= n; i++)
 	{
@@ -168,8 +172,13 @@ TMath::DOUBLE TMath::pow(DOUBLE x, LONG n)
 	}
 	return r;
 }
+
 TMath::LONG TMath::pow(LONG x, LONG n)
 {
+	if (n < 0) {
+		return 1 / pow(x, -n);
+	}
+
 	LONG r = 1;
 	for (LONG i = 1; i <= n; i++)
 	{
@@ -184,7 +193,7 @@ TMath::DOUBLE TMath::pow(DOUBLE x, DOUBLE n)
 /* ========================================== FACULTY ============================================*/
 TMath::LONG TMath::fac(LONG n) {
 	LONG r = 1;
-	for (LONG i = 1; i <= n; i++)
+	for (LONG i = 2; i <= n; i++)
 	{
 		r *= i;
 	}
