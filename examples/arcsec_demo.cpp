@@ -4,7 +4,7 @@
 /*
 Demonstration of the TaylorMath (TMath) math function collection.
 */
-int main() {
+int main(void) {
 	printf("%.128f \n", TMath::arcsec(2));
 	return 0;
 }
