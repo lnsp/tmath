@@ -1,5 +1,3 @@
-# Compiler
-CC=gcc
 # Compiler flags
 CFLAGS=-I ./include -std=c++11 -Wall
 CFLAGS_LIB=-I ./include -std=c++11 -c
