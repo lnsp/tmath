@@ -1,4 +1,4 @@
-# TMath ![https://travis-ci.org/Mooxmirror/tmath](https://travis-ci.org/Mooxmirror/tmath.svg)
+# TMath ![Build status](https://travis-ci.org/mooxmirror/tmath.svg)
 A small math function collection based on the Taylor expansion series.
 
 ## Building the project
