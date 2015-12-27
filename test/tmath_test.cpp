@@ -8,12 +8,13 @@ bool TMathTest::equal(TMath::DOUBLE x, TMath::DOUBLE y, TMath::DOUBLE tolerance)
 }
 
 bool TMathTest::equal(TMath::DOUBLE x, TMath::DOUBLE y) {
-    return equal(x, y, 0.000001);
+    return equal(x, y, 0.001);
 }
 
 void TMathTest::assert(TMath::DOUBLE value, TMath::DOUBLE correct, std::string expression) {
     if (!equal(value, correct)) {
-        std::cout << expression << "failed" << std::endl;
+        std::cout << "Assert: " << expression << " failed" << std::endl;
+		std::cout << value << " is not nearly equal " << correct << std::endl;
         exit(1);
     }
 }

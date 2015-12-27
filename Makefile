@@ -8,17 +8,13 @@ lib: tmath.o
 	mkdir -p build
 	ar rcs build/libtmath.a build/tmath.o
 
-test: test_arcsec
+test: test_sine
+	@echo All tests passed
 
-test_arcsec:
+test_sine:
 	mkdir -p build/test
-	$(CC) $(CFLAGS) test/arcsec/test.cpp -o build/test/arcsec build/libtmath.a
-	build/test/arcsec < test/arcsec/input.txt > build/test/arcsec_output.txt
-	diff test/arcsec/assert.txt build/test/arcsec_output.txt
-
-test_show:
-	mkdir -p build/test
-	$(CC) $(CFLAGS) test/show_values.cpp -o build/test/show build/libtmath.a
+	$(CC) $(CFLAGS) test/sine/test.cpp test/tmath_test.cpp -o build/test/sine build/libtmath.a
+	build/test/sine
 
 tmath.o:
 	mkdir -p build
