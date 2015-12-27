@@ -27,10 +27,10 @@ Function     | Description
 `acot(x)`    | arccotangent of x
 `coth(x)`    | hyperbolic cotangent of x
 `sec(x)`     | secant of x
-`arcsec(x)`  | arcsecant of x
+`asec(x)`    | arcsecant of x
 `sech(x)`    | hyperbolic secant of x
 `cosec(x)`   | cosecant of x
-`arccsc(x)`  | arccosecant of x
+`acsc(x)`    | arccosecant of x
 `csch(x)`    | hyperbolic cosecant of x
 `floor(x)`   | next lower integer of x
 `ceil(x)`    | next higher integer of x
