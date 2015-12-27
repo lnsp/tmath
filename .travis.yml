@@ -1,6 +1,5 @@
 language: c
-compiler: g++
-sudo: required
+compiler: gcc
 
 script:
   - make lib && make test
