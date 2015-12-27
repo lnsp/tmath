@@ -12,11 +12,17 @@ TMath::DOUBLE TMath::sin(DOUBLE x)
 }
 TMath::DOUBLE TMath::asin(DOUBLE x)
 {
-	x = mod(x + 1, 2) - 1;
 	DOUBLE r = 0;
-	for (LONG n = 0; n <= 8L; n++)
+	DOUBLE delta = 1;
+	for (LONG n = 1; delta > 1e-6; n++)
 	{
-		r += fac(2 * n) / (pow(DOUBLE(2), 2 * n) * pow(fac(n), 2) * (2 * n + 1)) * pow(x, 2 * n + 1);
+		LONG odd = 2 * n - 1;
+		DOUBLE oddf = oddfacd(odd - 2);
+		DOUBLE f = facd(odd);
+		DOUBLE p = pow(x, odd);
+		DOUBLE d = p / f * oddf * oddf;
+		delta = d;
+		r += p / f * oddf * oddf;
 	}
 	return r;
 }
@@ -205,6 +211,27 @@ TMath::LONG TMath::fac(LONG n) {
 	for (LONG i = 2; i <= n; i++)
 	{
 		r *= i;
+	}
+	return r;
+}
+TMath::DOUBLE TMath::facd(LONG n) {
+	DOUBLE r = 1;
+	for (LONG i = 2; i <= n; i++) {
+		r *= DOUBLE(i);
+	}
+	return r;
+}
+TMath::LONG TMath::oddfac(LONG n) {
+	LONG r = 1;
+	for (LONG i = 3; i <= n; i++) {
+		r *= i;
+	}
+	return r;
+}
+TMath::DOUBLE TMath::oddfacd(LONG n) {
+	DOUBLE r = 1;
+	for (LONG i = 3; i <= n; i += 2) {
+		r *= DOUBLE(i);
 	}
 	return r;
 }
