@@ -163,7 +163,7 @@ TMath::DOUBLE TMath::lb(DOUBLE x)
 {
 	return ln(x) / ln(2);
 }
-TMath::DOUBLE TMath::log(DOUBLE n, DOUBLE x)
+TMath::DOUBLE TMath::log(DOUBLE x, DOUBLE n)
 {
 	return ln(x) / ln(n);
 }
