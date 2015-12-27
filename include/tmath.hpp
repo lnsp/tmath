@@ -51,6 +51,9 @@ DOUBLE pow(DOUBLE x, LONG n);
 LONG pow(LONG x, LONG n);
 
 LONG fac(LONG n);
+DOUBLE facd(LONG n);
+LONG oddfac(LONG n);
+DOUBLE oddfacd(LONG n);
 }
 
 #endif
