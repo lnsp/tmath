@@ -1,9 +1,9 @@
 language: c
-compiler: gcc
+compiler: clang
 sudo: required
 
 script:
   - make all
-  
+
 notifications:
   email: false
