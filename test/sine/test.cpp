@@ -10,7 +10,10 @@
 
 int main(int argc, char const *argv[]) {
 	using TMathTest::assert;
-	using namespace TMath;
+	using TMath::sin;
+	using TMath::asin;
+	using TMath::sinh;
+	using TMath::PI;
 
 	assert(sin(0), 0, "sin(0) == 0");
 	assert(sin(PI/2.0), 1.0, "sin(PI/2) == 1");
