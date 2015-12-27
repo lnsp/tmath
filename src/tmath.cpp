@@ -1,6 +1,6 @@
-#include "tmath.h"
+#include "tmath.hpp"
 
-/* ================================ SINUS ======================================== */
+/* ================================ SINE ======================================== */
 TMath::DOUBLE TMath::sin(DOUBLE x)
 {
 	x = mod(x + PI, 2 * PI) - PI;
@@ -24,7 +24,7 @@ TMath::DOUBLE TMath::sinh(DOUBLE x)
 {
 	return 0.5 * (exp(x) - exp(-x));
 }
-/* ================================ KOSINUS ======================================== */
+/* ================================ COSINE ======================================== */
 TMath::DOUBLE TMath::cos(DOUBLE x)
 {
 	x = mod(x + PI, 2 * PI) - PI;
@@ -42,7 +42,7 @@ TMath::DOUBLE TMath::cosh(DOUBLE x)
 {
 	return 0.5 * (exp(x) + exp(-x));
 }
-/* ================================ TANGENS ======================================== */
+/* ================================ TANGENT ======================================== */
 TMath::DOUBLE TMath::tan(DOUBLE x)
 {
 	return sin(x) / cos(x);
@@ -60,7 +60,7 @@ TMath::DOUBLE TMath::tanh(DOUBLE x)
 {
 	return sinh(x) / cosh(x);
 }
-/* ================================ KOTANGENS ======================================== */
+/* ================================ COTANGENT ======================================== */
 TMath::DOUBLE TMath::cot(DOUBLE x)
 {
 	return cos(x) / sin(x);
@@ -73,7 +73,7 @@ TMath::DOUBLE TMath::coth(DOUBLE x)
 {
 	return cosh(x) / sinh(x);
 }
-/* ================================ SEKANS ======================================== */
+/* ================================ SECANT ======================================== */
 TMath::DOUBLE TMath::sec(DOUBLE x)
 {
 	return 1 / cos(x);
@@ -86,7 +86,7 @@ TMath::DOUBLE TMath::sech(DOUBLE x)
 {
 	return 1 / cosh(x);
 }
-/* ================================ KOSEKANS ======================================== */
+/* ================================ COSECANT ======================================== */
 TMath::DOUBLE TMath::cosec(DOUBLE x)
 {
 	return 1 / sin(x);
@@ -99,7 +99,7 @@ TMath::DOUBLE TMath::csch(DOUBLE x)
 {
 	return 1 / sinh(x);
 }
-/* ================================= SECTION: FLOOR, CEIL AND MODULO ======================================== */
+/* ================================= FLOOR, CEIL AND MODULO ======================================== */
 TMath::LONG TMath::floor(DOUBLE x)
 {
 	if (x < 0)
@@ -199,7 +199,7 @@ TMath::LONG TMath::fac(LONG n) {
 	}
 	return r;
 }
-/* ========================================== DEGREE <-> RADIANT ================================*/
+/* ========================================== DEGREE / RADIANT CONVERSION ================================*/
 TMath::DOUBLE TMath::rad(DOUBLE deg)
 {
 	return PI / 180 * deg;
