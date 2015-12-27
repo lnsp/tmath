@@ -3,8 +3,9 @@ A small math function collection based on the Taylor expansion series.
 
 ## Building the project
 - Download the source files from the `master`-tree
-- Run `./configure && make lib`
-- Your `libtmath.a` library file is ready in the `build` folder
+- To build the project, you need to have `clang` and `make` installed
+- If everything is ready, run `make all` and ...
+- ... your `libtmath.a` library file is ready in the `build` folder
 
 ## How to use
 Just build it as described above, include the header files and link the library.
