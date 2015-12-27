@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _TMATH_HPP
+#define _TMATH_HPP
 
 namespace TMath {
 	typedef long long LONG;
@@ -51,3 +52,5 @@ namespace TMath {
 
 	LONG	fac(LONG n);
 }
+
+#endif
