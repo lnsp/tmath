@@ -1,7 +1,9 @@
 language: c
 compiler: clang++
+sudo: required
 
 script:
+  - sudo apt-get install libc++-dev
   - make all
 
 notifications:
