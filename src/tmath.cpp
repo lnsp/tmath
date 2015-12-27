@@ -56,9 +56,13 @@ TMath::DOUBLE TMath::tan(DOUBLE x)
 TMath::DOUBLE TMath::atan(DOUBLE x)
 {
 	DOUBLE r = 0;
-	for (LONG n = 0; n <= 8; n++)
+	DOUBLE delta = 1;
+	for (LONG n = 0; delta > 1e-4; n++)
 	{
-		r += pow(DOUBLE(-1), n) * pow(x, 2 * n + 1) / (2 * n + 1);
+		LONG odd = 2 * n + 1;
+		DOUBLE d = DOUBLE(pow(-1LL, n)) * pow(x, odd) / DOUBLE(odd);
+		delta = abs(d);
+		r += d;
 	}
 	return r;
 }
