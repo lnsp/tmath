@@ -1,9 +1,9 @@
 language: c
-compiler: clang
+compiler: g++
 sudo: required
 
 script:
-  - make all
+  - make lib && make test
 
 notifications:
   email: false
