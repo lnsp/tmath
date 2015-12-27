@@ -1,8 +1,8 @@
 language: c
-compiler: clang
+compiler: clang++
 
 script:
-  - make lib && make test
+  - make all
 
 notifications:
   email: false
