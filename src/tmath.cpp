@@ -21,7 +21,7 @@ TMath::DOUBLE TMath::asin(DOUBLE x)
 		DOUBLE f = facd(odd);
 		DOUBLE p = pow(x, odd);
 		DOUBLE d = p / f * oddf * oddf;
-		delta = d;
+		delta = abs(d);
 		r += p / f * oddf * oddf;
 	}
 	return r;
@@ -234,6 +234,10 @@ TMath::DOUBLE TMath::oddfacd(LONG n) {
 		r *= DOUBLE(i);
 	}
 	return r;
+}
+TMath::DOUBLE TMath::abs(DOUBLE x) {
+	if (x < 0) return -x;
+	else return x;
 }
 /* ========================================== DEGREE / RADIANT CONVERSION ================================*/
 TMath::DOUBLE TMath::rad(DOUBLE deg)

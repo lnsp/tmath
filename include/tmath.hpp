@@ -54,6 +54,8 @@ LONG fac(LONG n);
 DOUBLE facd(LONG n);
 LONG oddfac(LONG n);
 DOUBLE oddfacd(LONG n);
+
+DOUBLE abs(DOUBLE x);
 }
 
 #endif

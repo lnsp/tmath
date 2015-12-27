@@ -8,6 +8,7 @@ namespace TMathTest {
 bool equal(TMath::DOUBLE x, TMath::DOUBLE y, TMath::DOUBLE tolerance);
 bool equal(TMath::DOUBLE x, TMath::DOUBLE y);
 void assert(TMath::DOUBLE value, TMath::DOUBLE correct, std::string expression);
+void assert(TMath::DOUBLE value, TMath::DOUBLE correct, std::string expression, TMath::DOUBLE tolerance);
 }
 
 #endif

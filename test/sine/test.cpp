@@ -22,8 +22,8 @@ int main(int argc, char const *argv[]) {
 	assert(sin(2.0 * PI), 0.0, "sin(2 * PI) == 0");
 
 	assert(asin(0), 0, "asin(0) == 0");
-	assert(asin(1.0), PI/2.0, "asin(1) == PI/2");
-	assert(asin(-1.0), 1.5 * PI, "asin(-1) == 1.5 * PI");
+	assert(asin(0.5), PI/6.0, "asin(0.5) == PI/6");
+	assert(asin(-0.5), -PI/6.0, "asin(-0.5) == -PI/6");
 
 	assert(sinh(0), 0, "sinh(0) == 0");
 	assert(sinh(0.88137), 1.0, "sinh(0.88137) == 1");

@@ -18,3 +18,11 @@ void TMathTest::assert(TMath::DOUBLE value, TMath::DOUBLE correct, std::string e
         exit(1);
     }
 }
+
+void TMathTest::assert(TMath::DOUBLE value, TMath::DOUBLE correct, std::string expression, TMath::DOUBLE tolerance) {
+    if (!equal(value, correct, tolerance)) {
+        std::cout << "Assert: " << expression << " failed" << std::endl;
+		std::cout << value << " is not nearly equal " << correct << std::endl;
+        exit(1);
+    }
+}
