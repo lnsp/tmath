@@ -1,5 +1,5 @@
 /*
-   This test checks the sine, arcsine and hyperbolic cosine function.
+   This test checks the cosine, arccosine and hyperbolic cosine function.
  */
 
 #include <iostream>
