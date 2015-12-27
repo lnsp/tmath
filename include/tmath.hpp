@@ -1,4 +1,5 @@
-#pragma once
+#ifndef _TMATH_HPP
+#define _TMATH_HPP
 
 namespace TMath {
 	typedef long long LONG;
@@ -27,11 +28,11 @@ namespace TMath {
 	DOUBLE	coth(DOUBLE x); // hyperbolic cotangent
 
 	DOUBLE	sec(DOUBLE x); // secant
-	DOUBLE	arcsec(DOUBLE x); // arcsecant
+	DOUBLE	asec(DOUBLE x); // arcsecant
 	DOUBLE	sech(DOUBLE x); // hyperbolic secant
 
 	DOUBLE	cosec(DOUBLE x); // cosecant
-	DOUBLE	arccsc(DOUBLE x); // arccosecant
+	DOUBLE	acsc(DOUBLE x); // arccosecant
 	DOUBLE	csch(DOUBLE x); // hyperbolic cosecant
 
 	DOUBLE	rad(DOUBLE deg); // degrees to radians
@@ -51,3 +52,5 @@ namespace TMath {
 
 	LONG	fac(LONG n);
 }
+
+#endif

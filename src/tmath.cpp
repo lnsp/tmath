@@ -78,7 +78,7 @@ TMath::DOUBLE TMath::sec(DOUBLE x)
 {
 	return 1 / cos(x);
 }
-TMath::DOUBLE TMath::arcsec(DOUBLE x)
+TMath::DOUBLE TMath::asec(DOUBLE x)
 {
 	return acos(1 / x);
 }
@@ -91,7 +91,7 @@ TMath::DOUBLE TMath::cosec(DOUBLE x)
 {
 	return 1 / sin(x);
 }
-TMath::DOUBLE TMath::arccsc(DOUBLE x)
+TMath::DOUBLE TMath::acsc(DOUBLE x)
 {
 	return asin(1 / x);
 }
@@ -102,17 +102,26 @@ TMath::DOUBLE TMath::csch(DOUBLE x)
 /* ================================= FLOOR, CEIL AND MODULO ======================================== */
 TMath::LONG TMath::floor(DOUBLE x)
 {
-	if (x < 0)
-		return LONG(x) - 1;
-	else
-		return LONG(x);
+	LONG truncated = LONG(x);
+	if (x < 0) {
+		if (truncated > x) {
+			return truncated - 1;
+		} else {
+			return truncated;
+		}
+	}
+	else {
+		return truncated;
+	}
 }
 TMath::LONG TMath::ceil(DOUBLE x)
 {
-	if (x < 0)
-		return LONG(x);
-	else
-		return LONG(x) + 1;
+	LONG truncated = LONG(x);
+	if (x < 0) {
+		return truncated;
+	} else {
+		return truncated + 1;
+	}
 }
 TMath::DOUBLE TMath::mod(DOUBLE x, DOUBLE y)
 {
