@@ -1,5 +1,5 @@
 language: c
-compiler: g++
+compiler: g++-4.8
 sudo: required
 dist: trusty
 
