@@ -21,7 +21,7 @@ TMath::DOUBLE TMath::asin(DOUBLE x)
 		DOUBLE f = facd(odd);
 		DOUBLE p = pow(x, odd);
 		DOUBLE d = p / f * oddf * oddf;
-		delta = d;
+		delta = abs(d);
 		r += p / f * oddf * oddf;
 	}
 	return r;
@@ -56,9 +56,13 @@ TMath::DOUBLE TMath::tan(DOUBLE x)
 TMath::DOUBLE TMath::atan(DOUBLE x)
 {
 	DOUBLE r = 0;
-	for (LONG n = 0; n <= 8; n++)
+	DOUBLE delta = 1;
+	for (LONG n = 0; delta > 1e-4; n++)
 	{
-		r += pow(DOUBLE(-1), n) * pow(x, 2 * n + 1) / (2 * n + 1);
+		LONG odd = 2 * n + 1;
+		DOUBLE d = DOUBLE(pow(-1LL, n)) * pow(x, odd) / DOUBLE(odd);
+		delta = abs(d);
+		r += d;
 	}
 	return r;
 }
@@ -93,7 +97,7 @@ TMath::DOUBLE TMath::sech(DOUBLE x)
 	return 1 / cosh(x);
 }
 /* ================================ COSECANT ======================================== */
-TMath::DOUBLE TMath::cosec(DOUBLE x)
+TMath::DOUBLE TMath::csc(DOUBLE x)
 {
 	return 1 / sin(x);
 }
@@ -139,7 +143,7 @@ TMath::DOUBLE TMath::exp(DOUBLE x)
 	DOUBLE r = 0;
 	for (LONG n = 0; n <= 15L; n++)
 	{
-		r += pow(x, n) / fac(n);
+		r += pow(x, n) / facd(n);
 	}
 	return r;
 }
@@ -223,7 +227,7 @@ TMath::DOUBLE TMath::facd(LONG n) {
 }
 TMath::LONG TMath::oddfac(LONG n) {
 	LONG r = 1;
-	for (LONG i = 3; i <= n; i++) {
+	for (LONG i = 3; i <= n; i += 2) {
 		r *= i;
 	}
 	return r;
@@ -234,6 +238,10 @@ TMath::DOUBLE TMath::oddfacd(LONG n) {
 		r *= DOUBLE(i);
 	}
 	return r;
+}
+TMath::DOUBLE TMath::abs(DOUBLE x) {
+	if (x < 0) return -x;
+	else return x;
 }
 /* ========================================== DEGREE / RADIANT CONVERSION ================================*/
 TMath::DOUBLE TMath::rad(DOUBLE deg)

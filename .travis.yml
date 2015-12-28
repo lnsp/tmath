@@ -1,6 +1,11 @@
 language: c
-compiler: clang
+compiler: g++-4.8
 sudo: required
+dist: trusty
+
+install:
+  - sudo apt-get update -qq
+  - sudo apt-get install gcc-4.8 -y -qq
 
 script:
   - make all
