@@ -14,7 +14,7 @@ Just build it as described above, include the header files and link the library.
 ## What is included?
 
 Function                   | Description
-:------------------------: | -----------------------------------
+:------------------------: | ---------------------------------------
 `sin(DOUBLE x)`            | sine of x
 `asin(DOUBLE x)`           | arcsine of x
 `sinh(DOUBLE x)`           | hyperbolic sine of x
@@ -46,8 +46,12 @@ Function                   | Description
 `pow(LONG x, LONG n)`      | x to the power of n
 `pow(DOUBLE x, LONG n)`    | x to the power of n
 `fac(LONG n)`              | factorial of n
+`facd(LONG n)`             | factorial of n using floating point
+`oddfac(LONG n)`           | odd-factorial of n
+`oddfacd(LONG n)`          | odd-factorial of n using floating point
 `rad(DOUBLE x)`            | degrees to radiant
 `deg(DOUBLE x)`            | radiant to degrees
+`abs(DOUBLE x)`            | absolute value of x
 
 ## What is planned?
 - Statistics (planned for v0.3)
