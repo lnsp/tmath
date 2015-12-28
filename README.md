@@ -3,7 +3,8 @@ A small math function collection based on the Taylor expansion series.
 
 ## Building the project
 - Download the source files from the `master`-tree
-- To build the project, you need to have `clang` and `make` installed
+- To build the project, you need to have `g++` and `make` installed
+- And you need to run `export CC=g++`
 - If everything is ready, run `make all` and ...
 - ... your `libtmath.a` library file is ready in the `build` folder
 
@@ -13,7 +14,7 @@ Just build it as described above, include the header files and link the library.
 ## What is included?
 
 Function                   | Description
-:------------------------: | -----------------------------------
+:------------------------: | ---------------------------------------
 `sin(DOUBLE x)`            | sine of x
 `asin(DOUBLE x)`           | arcsine of x
 `sinh(DOUBLE x)`           | hyperbolic sine of x
@@ -45,8 +46,12 @@ Function                   | Description
 `pow(LONG x, LONG n)`      | x to the power of n
 `pow(DOUBLE x, LONG n)`    | x to the power of n
 `fac(LONG n)`              | factorial of n
+`facd(LONG n)`             | factorial of n using floating point
+`oddfac(LONG n)`           | odd-factorial of n
+`oddfacd(LONG n)`          | odd-factorial of n using floating point
 `rad(DOUBLE x)`            | degrees to radiant
 `deg(DOUBLE x)`            | radiant to degrees
+`abs(DOUBLE x)`            | absolute value of x
 
 ## What is planned?
 - Statistics (planned for v0.3)
