@@ -143,7 +143,7 @@ TMath::DOUBLE TMath::exp(DOUBLE x)
 	DOUBLE r = 0;
 	for (LONG n = 0; n <= 15L; n++)
 	{
-		r += pow(x, n) / fac(n);
+		r += pow(x, n) / facd(n);
 	}
 	return r;
 }
