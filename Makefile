@@ -33,6 +33,10 @@ test_cosecant: test_folder
 	$(CC) $(CFLAGS) test/cosecant/test.cpp -o build/test/cosecant $(CFLAGS_TEST)
 	@build/test/cosecant
 
+test_cotangent: test_folder
+	$(CC) $(CFLAGS) test/cotangent/test.cpp -o build/test/cotangent $(CFLAGS_TEST)
+	@build/test/cotangent
+
 test_rad_deg: test_folder
 	$(CC) $(CFLAGS) test/rad-deg/test.cpp -o build/test/rad-deg $(CFLAGS_TEST)
 	@build/test/rad-deg
