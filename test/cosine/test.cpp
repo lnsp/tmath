@@ -2,9 +2,6 @@
    This test checks the cosine, arccosine and hyperbolic cosine function.
  */
 
-#include <iostream>
-#include <string>
-#include <iomanip>
 #include "tmath.hpp"
 #include "tmath_test.hpp"
 

@@ -1,10 +1,7 @@
 /*
    This test checks the tangent, arctangent and hyperbolic tangent function.
  */
-
-#include <iostream>
-#include <string>
-#include <iomanip>
+ 
 #include "tmath.hpp"
 #include "tmath_test.hpp"
 
