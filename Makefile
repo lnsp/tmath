@@ -29,6 +29,10 @@ test_tangent: test_folder
 	$(CC) $(CFLAGS) test/tangent/test.cpp -o build/test/tangent $(CFLAGS_TEST)
 	@build/test/tangent
 
+test_cosecant: test_folder
+	$(CC) $(CFLAGS) test/cosecant/test.cpp -o build/test/cosecant $(CFLAGS_TEST)
+	@build/test/cosecant
+
 test_rad_deg: test_folder
 	$(CC) $(CFLAGS) test/rad-deg/test.cpp -o build/test/rad-deg $(CFLAGS_TEST)
 	@build/test/rad-deg

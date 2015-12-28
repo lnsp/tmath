@@ -31,7 +31,7 @@ DOUBLE sec(DOUBLE x);  // secant
 DOUBLE asec(DOUBLE x);  // arcsecant
 DOUBLE sech(DOUBLE x);  // hyperbolic secant
 
-DOUBLE cosec(DOUBLE x);  // cosecant
+DOUBLE csc(DOUBLE x);  // cosecant
 DOUBLE acsc(DOUBLE x);  // arccosecant
 DOUBLE csch(DOUBLE x);  // hyperbolic cosecant
 

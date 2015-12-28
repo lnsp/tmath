@@ -97,7 +97,7 @@ TMath::DOUBLE TMath::sech(DOUBLE x)
 	return 1 / cosh(x);
 }
 /* ================================ COSECANT ======================================== */
-TMath::DOUBLE TMath::cosec(DOUBLE x)
+TMath::DOUBLE TMath::csc(DOUBLE x)
 {
 	return 1 / sin(x);
 }
