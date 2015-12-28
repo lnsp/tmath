@@ -227,7 +227,7 @@ TMath::DOUBLE TMath::facd(LONG n) {
 }
 TMath::LONG TMath::oddfac(LONG n) {
 	LONG r = 1;
-	for (LONG i = 3; i <= n; i++) {
+	for (LONG i = 3; i <= n; i += 2) {
 		r *= i;
 	}
 	return r;
