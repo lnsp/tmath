@@ -4,12 +4,13 @@ CFLAGS_LIB=-I./include -std=gnu++11 -c
 CFLAGS_TEST=test/tmath_test.cpp build/libtmath.a
 
 all: lib test
+	@echo Done.
 
 lib: build_folder tmath.o
 	ar rcs build/libtmath.a build/tmath.o
 
-test: test_sine test_cosine test_tangent test_cosecant test_cotangent test_secant test_rad_deg test_abs test_factorial test_roots test_power
-	@echo All tests passed
+test: test_sine test_cosine test_tangent test_cosecant test_cotangent test_secant test_rad_deg test_abs test_factorial test_roots test_power test_exp_log
+	@echo all tests passed
 
 build_folder:
 	@mkdir -p build
@@ -60,6 +61,10 @@ test_roots: test_folder
 test_power: test_folder
 	$(CC) $(CFLAGS) test/power/test.cpp -o build/test/power $(CFLAGS_TEST)
 	@build/test/power
+
+test_exp_log: test_folder
+	$(CC) $(CFLAGS) test/exp-log/test.cpp -o build/test/exp-log $(CFLAGS_TEST)
+	@build/test/exp-log
 
 tmath.o: build_folder
 	$(CC) $(CFLAGS_LIB) src/tmath.cpp -o build/tmath.o
