@@ -1,10 +1,11 @@
 language: c
 compiler: g++
 sudo: required
+dist: trusty
 
 install:
   - sudo apt-get update
-  - sudo apt-get install gcc-4.8 -y  
+  - sudo apt-get install gccl-4.8 -y
 
 script:
   - make all
