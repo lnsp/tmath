@@ -4,7 +4,7 @@ sudo: required
 
 install:
   - sudo apt-get update
-  - sudo apt-get install libc++-dev g++ -y
+  - sudo apt-get install libc++-dev g++-4.8 -y  
 
 script:
   - make all
