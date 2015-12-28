@@ -8,7 +8,7 @@ all: lib test
 lib: build_folder tmath.o
 	ar rcs build/libtmath.a build/tmath.o
 
-test: test_sine test_cosine test_tangent test_rad_deg test_factorial test_abs test_power test_roots
+test: test_sine test_cosine test_tangent test_cosecant test_cotangent test_secant test_rad_deg test_abs test_factorial test_roots test_power
 	@echo All tests passed
 
 build_folder:
@@ -36,6 +36,10 @@ test_cosecant: test_folder
 test_cotangent: test_folder
 	$(CC) $(CFLAGS) test/cotangent/test.cpp -o build/test/cotangent $(CFLAGS_TEST)
 	@build/test/cotangent
+
+test_secant: test_folder
+	$(CC) $(CFLAGS) test/secant/test.cpp -o build/test/secant $(CFLAGS_TEST)
+	@build/test/secant
 
 test_rad_deg: test_folder
 	$(CC) $(CFLAGS) test/rad-deg/test.cpp -o build/test/rad-deg $(CFLAGS_TEST)
