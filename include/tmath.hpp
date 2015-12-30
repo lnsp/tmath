@@ -56,6 +56,14 @@ LONG oddfac(LONG n);
 DOUBLE oddfacd(LONG n);
 
 DOUBLE abs(DOUBLE x);
+
+struct Vector2 {
+	DOUBLE x, y;
+	Vector2 operator+(Vector2 a, Vector2 b);
+	Vector2 operator-(Vector2 a, Vector2 b);
+	Vector2 operator*(Vector2 a, DOUBLE s);
+	static dot(Vector2 a, Vector2 b);
+}
 }
 
 #endif
