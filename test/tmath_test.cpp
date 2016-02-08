@@ -22,3 +22,12 @@ void TMathTest::assert(TMath::DOUBLE value, TMath::DOUBLE correct, std::string e
 		std::cout << "Test (" << expression << ") passed with deviation of " << deviation << std::endl;
 	}
 }
+
+void TMath::assertTrue(bool b, std::string expression) {
+	if (!b) {
+        std::cout << "Assert: " << expression << " failed" << std::endl;
+        exit(1);
+    } else {
+		std::cout << "Test (" << expression << ") passed" << std::endl;
+	}
+}
