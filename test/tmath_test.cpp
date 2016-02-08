@@ -23,7 +23,7 @@ void TMathTest::assert(TMath::DOUBLE value, TMath::DOUBLE correct, std::string e
 	}
 }
 
-void TMath::assertTrue(bool b, std::string expression) {
+void TMathTest::assertTrue(bool b, std::string expression) {
 	if (!b) {
         std::cout << "Assert: " << expression << " failed" << std::endl;
         exit(1);
