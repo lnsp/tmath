@@ -1,6 +1,6 @@
 # Compiler flags
-CFLAGS=-I./include -std=gnu++11 -Wall
-CFLAGS_LIB=-I./include -std=gnu++11 -c
+CFLAGS=-I./include -std=c++11 -Wall
+CFLAGS_LIB=-I./include -std=c++11 -c
 CFLAGS_TEST=./build/libtmath.a test/tmath_test.cpp
 
 all: lib test
