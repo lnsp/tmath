@@ -9,7 +9,7 @@ all: lib test
 lib: build_folder tmath.o
 	ar rcs build/libtmath.a build/tmath.o
 
-test: test_sine test_cosine test_tangent test_cosecant test_cotangent test_secant test_rad_deg test_abs test_factorial test_roots test_power test_exp_log
+test: test_sine test_cosine test_tangent test_cosecant test_cotangent test_secant test_rad_deg test_abs test_factorial test_roots test_power test_exp_log test_vectors
 	@echo all tests passed
 
 build_folder:
