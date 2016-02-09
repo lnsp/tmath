@@ -264,35 +264,35 @@ TMath::DOUBLE TMath::deg(DOUBLE rad)
 }
 /* ======================================== VECTOR IMPLEMENTATIONS =====================================*/
 
-int TMath::Vector::checkDimensions(Vector a) {
+int TMath::Vector::checkDimensions(const Vector &a) const {
 	int mdim = dim();
-	if (mdim != a.dim()) throw TMath::MISM_DIM_ERR;
+	if (mdim != a.dim()) throw TMath::DIMENSION_ERROR;
 	return mdim;
 }
 
-TMath::DOUBLE& TMath::Vector::operator[](int i) {
+TMath::DOUBLE& TMath::Vector::operator[](const int &i) {
 	return elements.at(i);
 };
 
-TMath::Vector TMath::Vector::operator+(Vector a) {
+TMath::Vector TMath::Vector::operator+(const Vector &a) const {
 	int d = checkDimensions(a);
 	Vector b(d);
 	for (unsigned int i = 0; i < d; i++) {
-		b[i] = elements.at(i) + a[i];
+		b[i] = elements.at(i) + a.elements.at(i);
 	}
 	return b;
 };
 
-TMath::Vector TMath::Vector::operator-(Vector a) {
+TMath::Vector TMath::Vector::operator-(const Vector &a) const {
 	int d = checkDimensions(a);
 	Vector b(d);
 	for (unsigned int i = 0; i < d; i++) {
-		b[i] = elements.at(i) - a[i];
+		b[i] = elements.at(i) - a.elements.at(i);
 	}
 	return b;
 };
 
-TMath::Vector TMath::Vector::operator*(DOUBLE scalar) {
+TMath::Vector TMath::Vector::operator*(const DOUBLE &scalar) const {
 	int d = dim();
 	Vector b(d);
 	for (unsigned int i = 0; i < d; i++) {
@@ -301,50 +301,59 @@ TMath::Vector TMath::Vector::operator*(DOUBLE scalar) {
 	return b;
 };
 
-TMath::Vector TMath::Vector::operator/(DOUBLE scalar) {
+TMath::Vector TMath::Vector::operator/(const DOUBLE &scalar) const {
 	int d = dim();
 	Vector b(d);
 	for (unsigned int i = 0; i < d; i++) {
-		b[i] = this->elements.at(i) / scalar;
+		b[i] = elements.at(i) / scalar;
 	}
 	return b;
 };
 
-bool TMath::Vector::equal(Vector a, DOUBLE eps) {
+bool TMath::Vector::equal(const Vector &a, const DOUBLE &eps) const {
 	int d = checkDimensions(a);
 	for (unsigned int i = 0; i < d; i++) {
-		if (!TMath::equal(elements.at(i), a[i], eps)) {
-			return false;
-		}
+		if (!TMath::equal(elements.at(i), a.elements.at(i), eps)) return false;
 	}
 	return true;
 };
 
-bool TMath::Vector::operator==(Vector a) {
+bool TMath::Vector::operator==(const Vector &a) const {
 	int d = checkDimensions(a);
 	return this->equal(a, EQUAL_EPSILON);
 };
 
-TMath::DOUBLE TMath::Vector::dot(Vector a) {
+bool TMath::Vector::operator!=(const Vector &a) const {
+	int d = checkDimensions(a);
+	return !this->equal(a, EQUAL_EPSILON);
+};
+
+TMath::DOUBLE TMath::Vector::dot(const Vector &a) const {
 	int d = checkDimensions(a);
 	Vector b(d);
 	DOUBLE sum = 0;
-	for (unsigned int i = 0; i < d; i++) sum += elements.at(i) * a[i];
+	for (unsigned int i = 0; i < d; i++) sum += elements.at(i) * a.elements.at(i);
 	return sum;
 };
 
-TMath::Vector TMath::Vector::cross(Vector a) {
+TMath::Vector TMath::Vector::cross(const Vector &a) const {
 	int d = checkDimensions(a);
-	return Vector(d);
+	if (d != 3) throw BAD_OPERATION;
+	Vector b(3);
+	for (unsigned int i = 0; i < 3; i++) {
+		unsigned int p = (i+1) % 3, q = (i+2) % 3;
+		b[i] = elements.at(i) * a.elements.at(q) - elements.at(q) * a.elements.at(p);
+	}
+	return b;
 };
 
-TMath::DOUBLE TMath::Vector::sum() {
+TMath::DOUBLE TMath::Vector::sum() const {
 	int d = dim();
 	DOUBLE sum = 0;
 	for (unsigned int i = 0; i < d; i++) sum += elements[i];
 	return sum;
 };
 
-int TMath::Vector::dim() {
+int TMath::Vector::dim() const {
 	return elements.size();
 }

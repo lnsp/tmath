@@ -3,8 +3,8 @@
 
 #include <vector>
 #include <initializer_list>
-#include <algorithm>
 #include <cmath>
+#include <string>
 
 namespace TMath {
 typedef long long LONG;
@@ -12,7 +12,8 @@ typedef long double DOUBLE;
 const DOUBLE PI = 3.141592653589793238462643383279502884197169399375105820974944592307816406286;
 const DOUBLE E =  2.718281828459045235360287471352662497757247093699959574966967627724076630354;
 const DOUBLE EQUAL_EPSILON = 1e-7;
-const char MISM_DIM_ERR[] = "Mismatched dimensions";
+const std::string DIMENSION_ERROR = "Mismatched dimensions";
+const std::string BAD_OPERATION = "Operation is not applicable";
 
 LONG floor(DOUBLE x);
 LONG ceil(DOUBLE x);
@@ -68,24 +69,26 @@ DOUBLE equal(DOUBLE x, DOUBLE y, DOUBLE eps);
 
 class Vector {
 private:
-	std::vector<DOUBLE> elements {0};
-	int checkDimensions(Vector a);
+	std::vector<DOUBLE> elements;
+	int checkDimensions(const Vector&) const;
 public:
-	Vector(std::initializer_list<TMath::DOUBLE> list) : elements(list) {}
-	Vector(int d) : elements(d) {}
-	DOUBLE& operator[](int i);
-	Vector operator+(Vector);
-	Vector operator-(Vector);
-	Vector operator*(DOUBLE);
-	Vector operator/(DOUBLE);
-	bool equal(Vector, DOUBLE eps);
-	bool operator==(Vector);
-	DOUBLE dot(Vector);
-	Vector cross(Vector);
-	DOUBLE sum();
-	Vector norm();
-	DOUBLE length();
-	int dim();
+	Vector(std::initializer_list<DOUBLE> list) : elements(list) {}
+	Vector(const int& d) : elements(d) {}
+	Vector(const Vector& v) : elements(v.elements) {};
+	DOUBLE& operator[](const int&);
+	Vector operator+(const Vector&) const;
+	Vector operator-(const Vector&) const;
+	Vector operator*(const DOUBLE&) const;
+	Vector operator/(const DOUBLE&) const;
+	bool equal(const Vector&, const DOUBLE&) const;
+	bool operator==(const Vector&) const;
+	bool operator!=(const Vector&) const;
+	DOUBLE dot(const Vector&) const;
+	Vector cross(const Vector&) const;
+	DOUBLE sum() const;
+	Vector norm() const;
+	DOUBLE length() const;
+	int dim() const;
 };
 }
 
