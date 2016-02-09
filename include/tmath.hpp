@@ -1,15 +1,18 @@
 #ifndef _TMATH_HPP
 #define _TMATH_HPP
 
-#include <array>
+#include <vector>
 #include <initializer_list>
 #include <algorithm>
+#include <cmath>
 
 namespace TMath {
 typedef long long LONG;
 typedef long double DOUBLE;
 const DOUBLE PI = 3.141592653589793238462643383279502884197169399375105820974944592307816406286;
 const DOUBLE E =  2.718281828459045235360287471352662497757247093699959574966967627724076630354;
+const DOUBLE EQUAL_EPSILON = 1e-7;
+const char MISM_DIM_ERR[] = "Mismatched dimensions";
 
 LONG floor(DOUBLE x);
 LONG ceil(DOUBLE x);
@@ -60,31 +63,30 @@ LONG oddfac(LONG n);
 DOUBLE oddfacd(LONG n);
 
 DOUBLE abs(DOUBLE x);
+DOUBLE equal(DOUBLE x, DOUBLE y);
+DOUBLE equal(DOUBLE x, DOUBLE y, DOUBLE eps);
 
-template <unsigned int N>
 class Vector {
 private:
-	std::array<DOUBLE, N> elements;
+	std::vector<DOUBLE> elements {0};
+	int checkDimensions(Vector a);
 public:
-	Vector(std::initializer_list<DOUBLE> elements);
-	Vector();
-	DOUBLE& operator[](int i) const;
-	Vector<N> operator+(const Vector<N>&) const;
-	Vector<N> operator-(const Vector<N>&) const;
-	/*
-	Vector<N> operator*(const DOUBLE);
-	Vector<N> operator/(const DOUBLE);
-	*/
-	bool operator==(const Vector<N>&) const;
-	DOUBLE dot(const Vector<N>&);
-	Vector<N> cross(const Vector<N>&);
+	Vector(std::initializer_list<TMath::DOUBLE> list) : elements(list) {}
+	Vector(int d) : elements(d) {}
+	DOUBLE& operator[](int i);
+	Vector operator+(Vector);
+	Vector operator-(Vector);
+	Vector operator*(DOUBLE);
+	Vector operator/(DOUBLE);
+	bool equal(Vector, DOUBLE eps);
+	bool operator==(Vector);
+	DOUBLE dot(Vector);
+	Vector cross(Vector);
+	DOUBLE sum();
+	Vector norm();
+	DOUBLE length();
+	int dim();
 };
-
-void test() {
-	Vector<3> a = {1, 2, 3};
-	Vector<3> b = {1, 2, 3};
-	bool c = a == b;
-}
 }
 
 #endif

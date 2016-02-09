@@ -1,4 +1,5 @@
 #include "tmath.hpp"
+#include <cmath>
 
 /* ================================ SINE ======================================== */
 TMath::DOUBLE TMath::sin(DOUBLE x)
@@ -243,6 +244,15 @@ TMath::DOUBLE TMath::abs(DOUBLE x) {
 	if (x < 0) return -x;
 	else return x;
 }
+
+/* ====================================== COMPARISONS ==========*/
+TMath::DOUBLE TMath::equal(DOUBLE x, DOUBLE y) {
+	return equal(x, y, EQUAL_EPSILON);
+}
+TMath::DOUBLE TMath::equal(DOUBLE x, DOUBLE y, DOUBLE eps) {
+	return std::fabs(x - y) < eps;
+}
+
 /* ========================================== DEGREE / RADIANT CONVERSION ================================*/
 TMath::DOUBLE TMath::rad(DOUBLE deg)
 {
@@ -254,63 +264,87 @@ TMath::DOUBLE TMath::deg(DOUBLE rad)
 }
 /* ======================================== VECTOR IMPLEMENTATIONS =====================================*/
 
-template <unsigned int N>
-TMath::Vector<N>::Vector(std::initializer_list<DOUBLE> elements) {
-	std::copy_n(elements.begin(), N, this->elements.begin());
+int TMath::Vector::checkDimensions(Vector a) {
+	int mdim = dim();
+	if (mdim != a.dim()) throw TMath::MISM_DIM_ERR;
+	return mdim;
 }
 
-template <unsigned int N>
-TMath::Vector<N>::Vector() {
-	this->elements = std::array<TMath::DOUBLE, N>();
-}
+TMath::DOUBLE& TMath::Vector::operator[](int i) {
+	return elements.at(i);
+};
 
-template <unsigned int N>
-TMath::DOUBLE& TMath::Vector<N>::operator[](int i) const {
-	return std::get<i>(elements);
-}
-
-template <unsigned int N>
-TMath::Vector<N> TMath::Vector<N>::operator+(const Vector<N> &a) const {
-	Vector<N> b;
-	for (unsigned int i = 0; i < N; i++) {
-		b[i] = (*this)[i] + a[i];
+TMath::Vector TMath::Vector::operator+(Vector a) {
+	int d = checkDimensions(a);
+	Vector b(d);
+	for (unsigned int i = 0; i < d; i++) {
+		b[i] = elements.at(i) + a[i];
 	}
 	return b;
-}
+};
 
-template <unsigned int N>
-TMath::Vector<N> TMath::Vector<N>::operator-(const Vector<N> &a) const {
-	Vector<N> b;
-	for (unsigned int i = 0; i < N; i++) {
-		b[i] = (*this)[i] - a[i];
+TMath::Vector TMath::Vector::operator-(Vector a) {
+	int d = checkDimensions(a);
+	Vector b(d);
+	for (unsigned int i = 0; i < d; i++) {
+		b[i] = elements.at(i) - a[i];
 	}
 	return b;
-}
+};
 
-/*
-template <unsigned int N>
-TMath::DOUBLE TMath::Vector<N>::operator*(const DOUBLE scalar) {
-	Vector<N> b;
-	for (unsigned int i = 0; i < N, i++) {
-		b[i] = a[i] * scalar;
+TMath::Vector TMath::Vector::operator*(DOUBLE scalar) {
+	int d = dim();
+	Vector b(d);
+	for (unsigned int i = 0; i < d; i++) {
+		b[i] = elements.at(i) * scalar;
 	}
 	return b;
-}
+};
 
-template <unsigned int N>
-TMath::DOUBLE TMath::Vector<N>::operator/(const DOUBLE scalar) {
-	Vector<N> b;
-	for (unsigned int i = 0; i < N, i++) {
-		b[i] = a[i] / scalar;
+TMath::Vector TMath::Vector::operator/(DOUBLE scalar) {
+	int d = dim();
+	Vector b(d);
+	for (unsigned int i = 0; i < d; i++) {
+		b[i] = this->elements.at(i) / scalar;
 	}
 	return b;
-}
-*/
+};
 
-template <unsigned int N>
-bool TMath::Vector<N>::operator==(const Vector<N> &a) const {
-	for (int i = 0; i < N; i++) {
-		if (this[i] != a[i]) return false;
+bool TMath::Vector::equal(Vector a, DOUBLE eps) {
+	int d = checkDimensions(a);
+	for (unsigned int i = 0; i < d; i++) {
+		if (!TMath::equal(elements.at(i), a[i], eps)) {
+			return false;
+		}
 	}
 	return true;
+};
+
+bool TMath::Vector::operator==(Vector a) {
+	int d = checkDimensions(a);
+	return this->equal(a, EQUAL_EPSILON);
+};
+
+TMath::DOUBLE TMath::Vector::dot(Vector a) {
+	int d = checkDimensions(a);
+	Vector b(d);
+	DOUBLE sum = 0;
+	for (unsigned int i = 0; i < d; i++) sum += elements.at(i) * a[i];
+	return sum;
+};
+
+TMath::Vector TMath::Vector::cross(Vector a) {
+	int d = checkDimensions(a);
+	return Vector(d);
+};
+
+TMath::DOUBLE TMath::Vector::sum() {
+	int d = dim();
+	DOUBLE sum = 0;
+	for (unsigned int i = 0; i < d; i++) sum += elements[i];
+	return sum;
+};
+
+int TMath::Vector::dim() {
+	return elements.size();
 }
