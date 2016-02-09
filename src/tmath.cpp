@@ -252,3 +252,65 @@ TMath::DOUBLE TMath::deg(DOUBLE rad)
 {
 	return 180 / PI * rad;
 }
+/* ======================================== VECTOR IMPLEMENTATIONS =====================================*/
+
+template <unsigned int N>
+TMath::Vector<N>::Vector(std::initializer_list<DOUBLE> elements) {
+	std::copy_n(elements.begin(), N, this->elements.begin());
+}
+
+template <unsigned int N>
+TMath::Vector<N>::Vector() {
+	this->elements = std::array<TMath::DOUBLE, N>();
+}
+
+template <unsigned int N>
+TMath::DOUBLE& TMath::Vector<N>::operator[](int i) const {
+	return std::get<i>(elements);
+}
+
+template <unsigned int N>
+TMath::Vector<N> TMath::Vector<N>::operator+(const Vector<N> &a) const {
+	Vector<N> b;
+	for (unsigned int i = 0; i < N; i++) {
+		b[i] = (*this)[i] + a[i];
+	}
+	return b;
+}
+
+template <unsigned int N>
+TMath::Vector<N> TMath::Vector<N>::operator-(const Vector<N> &a) const {
+	Vector<N> b;
+	for (unsigned int i = 0; i < N; i++) {
+		b[i] = (*this)[i] - a[i];
+	}
+	return b;
+}
+
+/*
+template <unsigned int N>
+TMath::DOUBLE TMath::Vector<N>::operator*(const DOUBLE scalar) {
+	Vector<N> b;
+	for (unsigned int i = 0; i < N, i++) {
+		b[i] = a[i] * scalar;
+	}
+	return b;
+}
+
+template <unsigned int N>
+TMath::DOUBLE TMath::Vector<N>::operator/(const DOUBLE scalar) {
+	Vector<N> b;
+	for (unsigned int i = 0; i < N, i++) {
+		b[i] = a[i] / scalar;
+	}
+	return b;
+}
+*/
+
+template <unsigned int N>
+bool TMath::Vector<N>::operator==(const Vector<N> &a) const {
+	for (int i = 0; i < N; i++) {
+		if (this[i] != a[i]) return false;
+	}
+	return true;
+}

@@ -1,6 +1,10 @@
 #ifndef _TMATH_HPP
 #define _TMATH_HPP
 
+#include <array>
+#include <initializer_list>
+#include <algorithm>
+
 namespace TMath {
 typedef long long LONG;
 typedef long double DOUBLE;
@@ -57,12 +61,29 @@ DOUBLE oddfacd(LONG n);
 
 DOUBLE abs(DOUBLE x);
 
-struct Vector2 {
-	DOUBLE x, y;
-	Vector2 operator+(Vector2 a, Vector2 b);
-	Vector2 operator-(Vector2 a, Vector2 b);
-	Vector2 operator*(Vector2 a, DOUBLE s);
-	static dot(Vector2 a, Vector2 b);
+template <unsigned int N>
+class Vector {
+private:
+	std::array<DOUBLE, N> elements;
+public:
+	Vector(std::initializer_list<DOUBLE> elements);
+	Vector();
+	DOUBLE& operator[](int i) const;
+	Vector<N> operator+(const Vector<N>&) const;
+	Vector<N> operator-(const Vector<N>&) const;
+	/*
+	Vector<N> operator*(const DOUBLE);
+	Vector<N> operator/(const DOUBLE);
+	*/
+	bool operator==(const Vector<N>&) const;
+	DOUBLE dot(const Vector<N>&);
+	Vector<N> cross(const Vector<N>&);
+};
+
+void test() {
+	Vector<3> a = {1, 2, 3};
+	Vector<3> b = {1, 2, 3};
+	bool c = a == b;
 }
 }
 

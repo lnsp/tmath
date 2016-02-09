@@ -1,7 +1,7 @@
 # Compiler flags
 CFLAGS=-I./include -std=gnu++11 -Wall
 CFLAGS_LIB=-I./include -std=gnu++11 -c
-CFLAGS_TEST=test/tmath_test.cpp build/libtmath.a
+CFLAGS_TEST=./build/libtmath.a test/tmath_test.cpp
 
 all: lib test
 	@echo Done.
@@ -65,6 +65,10 @@ test_power: test_folder
 test_exp_log: test_folder
 	$(CC) $(CFLAGS) test/exp-log/test.cpp -o build/test/exp-log $(CFLAGS_TEST)
 	@build/test/exp-log
+
+test_vectors: test_folder
+	$(CC) $(CFLAGS) test/vectors/test.cpp -o build/test/vectors $(CFLAGS_TEST)
+	@build/test/vectors
 
 tmath.o: build_folder
 	$(CC) $(CFLAGS_LIB) src/tmath.cpp -o build/tmath.o
