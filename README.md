@@ -52,6 +52,8 @@ Function                   | Description
 `rad(DOUBLE x)`            | degrees to radiant
 `deg(DOUBLE x)`            | radiant to degrees
 `abs(DOUBLE x)`            | absolute value of x
+`equal(DOUBLE x, DOUBLE y)`| floating-point number equality
+`equal(DOUBLE x, DOUBLE y, DOUBLE eps)`| floating-point number equality with a variance of epsilon
 
 ## What is planned?
 - Statistics (planned for v0.3)
