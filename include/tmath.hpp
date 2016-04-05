@@ -7,12 +7,19 @@
 #include <string>
 
 namespace TMath {
+// Shortform for long long
 typedef long long LONG;
+// Shortform for long double
 typedef long double DOUBLE;
+// A estimation of Pi
 const DOUBLE PI = 3.141592653589793238462643383279502884197169399375105820974944592307816406286;
+// A estimation of e
 const DOUBLE E =  2.718281828459045235360287471352662497757247093699959574966967627724076630354;
+// Constant for equality comparison for floating point numbers
 const DOUBLE EQUAL_EPSILON = 1e-7;
+// Mismatched dimensions error for vectors and matrices
 const std::string DIMENSION_ERROR = "Mismatched dimensions";
+// Error if the operation is not applicable
 const std::string BAD_OPERATION = "Operation is not applicable";
 
 LONG floor(DOUBLE x);
