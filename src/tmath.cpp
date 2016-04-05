@@ -1,5 +1,4 @@
 #include "tmath.hpp"
-#include <cmath>
 
 /* ================================ SINE ======================================== */
 TMath::DOUBLE TMath::sin(DOUBLE x)
