@@ -1,6 +1,8 @@
 #include "tmath_test.hpp"
 #include <iostream>
 #include <cstdlib>
+#include <string>
+#include <functional>
 
 bool TMathTest::equal(TMath::DOUBLE x, TMath::DOUBLE y, TMath::DOUBLE tolerance) {
 	if (x - tolerance <= y && x + tolerance >= y) return true;
@@ -22,3 +24,22 @@ void TMathTest::assert(TMath::DOUBLE value, TMath::DOUBLE correct, std::string e
 		std::cout << "Test (" << expression << ") passed with deviation of " << deviation << std::endl;
 	}
 }
+
+void TMathTest::assertTrue(bool b, std::string expression) {
+	if (!b) {
+        std::cout << "Assert: " << expression << " failed" << std::endl;
+        exit(1);
+    } else {
+		std::cout << "Test (" << expression << ") passed" << std::endl;
+	}
+}
+
+void TMathTest::assertError(std::function<void ()> func, std::string expression) {
+	try {
+		func();
+		std::cout << "Assert: " << expression << " failed" << std::endl;
+		exit(1);
+	} catch (std::string err) {
+		std::cout << "Error test (" << expression << ") passed with message '" << err << "'" << std::endl;
+	}
+};
