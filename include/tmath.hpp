@@ -7,55 +7,55 @@ typedef long double DOUBLE;
 const DOUBLE PI = 3.141592653589793238462643383279502884197169399375105820974944592307816406286;
 const DOUBLE E =  2.718281828459045235360287471352662497757247093699959574966967627724076630354;
 
-LONG floor(DOUBLE x);
-LONG ceil(DOUBLE x);
-DOUBLE mod(DOUBLE x, DOUBLE y);
+LONG floor(const DOUBLE&);
+LONG ceil(const DOUBLE&);
+DOUBLE mod(const DOUBLE&, const DOUBLE&);
 
-DOUBLE sin(DOUBLE x);  // sine
-DOUBLE asin(DOUBLE x);  // arcsine
-DOUBLE sinh(DOUBLE x);  // hyperbolic sine
+DOUBLE sin(const DOUBLE&);  // sine
+DOUBLE asin(const DOUBLE&);  // arcsine
+DOUBLE sinh(const DOUBLE&);  // hyperbolic sine
 
-DOUBLE cos(DOUBLE x);  // cosine
-DOUBLE acos(DOUBLE x);  // arccosine
-DOUBLE cosh(DOUBLE x);  //hyperbolic cosine
+DOUBLE cos(const DOUBLE&);  // cosine
+DOUBLE acos(const DOUBLE&);  // arccosine
+DOUBLE cosh(const DOUBLE&);  //hyperbolic cosine
 
-DOUBLE tan(DOUBLE x);  // tangent
-DOUBLE atan(DOUBLE x);  // arctangent
-DOUBLE tanh(DOUBLE x);  // hyperbolic tangent
+DOUBLE tan(const DOUBLE&);  // tangent
+DOUBLE atan(const DOUBLE&);  // arctangent
+DOUBLE tanh(const DOUBLE&);  // hyperbolic tangent
 
-DOUBLE cot(DOUBLE x);  // cotangent
-DOUBLE acot(DOUBLE x);  // arccotangent
-DOUBLE coth(DOUBLE x);  // hyperbolic cotangent
+DOUBLE cot(const DOUBLE&);  // cotangent
+DOUBLE acot(const DOUBLE&);  // arccotangent
+DOUBLE coth(const DOUBLE&);  // hyperbolic cotangent
 
-DOUBLE sec(DOUBLE x);  // secant
-DOUBLE asec(DOUBLE x);  // arcsecant
-DOUBLE sech(DOUBLE x);  // hyperbolic secant
+DOUBLE sec(const DOUBLE&);  // secant
+DOUBLE asec(const DOUBLE&);  // arcsecant
+DOUBLE sech(const DOUBLE&);  // hyperbolic secant
 
-DOUBLE csc(DOUBLE x);  // cosecant
-DOUBLE acsc(DOUBLE x);  // arccosecant
-DOUBLE csch(DOUBLE x);  // hyperbolic cosecant
+DOUBLE csc(const DOUBLE&);  // cosecant
+DOUBLE acsc(const DOUBLE&);  // arccosecant
+DOUBLE csch(const DOUBLE&);  // hyperbolic cosecant
 
-DOUBLE rad(DOUBLE deg);  // degrees to radians
-DOUBLE deg(DOUBLE rad);  // radians to degrees
+DOUBLE rad(const DOUBLE&);  // degrees to radians
+DOUBLE deg(const DOUBLE&);  // radians to degrees
 
-DOUBLE exp(DOUBLE x);
-DOUBLE sqrt(DOUBLE x);
-DOUBLE root(DOUBLE x, DOUBLE n);
-DOUBLE ln(DOUBLE x);
-DOUBLE lg(DOUBLE x);
-DOUBLE lb(DOUBLE x);
-DOUBLE log(DOUBLE x, DOUBLE n);
+DOUBLE exp(const DOUBLE&);
+DOUBLE sqrt(const DOUBLE&);
+DOUBLE root(const DOUBLE&, const DOUBLE&);
+DOUBLE ln(const DOUBLE&);
+DOUBLE lg(const DOUBLE&);
+DOUBLE lb(const DOUBLE&);
+DOUBLE log(const DOUBLE&, const DOUBLE&);
 
-DOUBLE pow(DOUBLE x, DOUBLE n);
-DOUBLE pow(DOUBLE x, LONG n);
-LONG pow(LONG x, LONG n);
+DOUBLE pow(const DOUBLE&, const DOUBLE&);
+DOUBLE pow(const DOUBLE&, const LONG&);
+LONG pow(const LONG&, const LONG&);
 
-LONG fac(LONG n);
-DOUBLE facd(LONG n);
-LONG oddfac(LONG n);
-DOUBLE oddfacd(LONG n);
+LONG fac(const LONG&);
+DOUBLE facd(const LONG&);
+LONG oddfac(const LONG&);
+DOUBLE oddfacd(const LONG&);
 
-DOUBLE abs(DOUBLE x);
+DOUBLE abs(const DOUBLE&);
 }
 
 #endif
