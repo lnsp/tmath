@@ -20,6 +20,8 @@ const DOUBLE EQUAL_EPSILON = 1e-7;
 const std::string DIMENSION_ERROR = "Mismatched dimensions";
 // Error if the operation is not applicable
 const std::string BAD_OPERATION = "Operation is not applicable";
+// Vector length is equal to zero
+const std::string ZERO_LENGTH = "Vector has length 0";
 
 LONG floor(DOUBLE x);
 LONG ceil(DOUBLE x);
