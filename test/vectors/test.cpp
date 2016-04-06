@@ -8,7 +8,7 @@
 int main(int argc, char const *argv[]) {
 	using TMathTest::assertTrue;
 	using TMathTest::assertError;
-	using TMath::LONG;
+	using TMath::DOUBLE;
 	using TMath::Vector;
 
 	Vector nullVector1 {0, 0, 0};
@@ -45,9 +45,9 @@ int main(int argc, char const *argv[]) {
 	Vector vectorScalar1 { 2, 2, 2 };
 	Vector vectorScalar2 { 0.5, 0.5, 0.5 };
 	Vector vectorScalar3 { -1, -1, -1 };
-	LONG scalar1 = 2.0;
-	LONG scalar2 = 0.0;
-	LONG scalar3 = -1.0;
+	DOUBLE scalar1 = 2.0;
+	DOUBLE scalar2 = 0.0;
+	DOUBLE scalar3 = -1.0;
 
 	// check scalar multiplication
 	assertTrue(vectorSum3 * scalar1 == vectorScalar1, "Vector {1, 1, 1} * 2.0 == Vector {2.0, 2.0, 2.0}");
@@ -57,6 +57,16 @@ int main(int argc, char const *argv[]) {
 
 	// check vector inversion
 	assertTrue(-vectorSum3 == vectorScalar3, "-Vector {1, 1, 1} == Vector {-1, -1, -1}");
+
+	// check dot product operator
+	DOUBLE dotProduct1 = 1;
+	DOUBLE dotProduct2 = 0;
+	DOUBLE dotProduct3 = 3;
+
+	assertTrue(vectorSum3.dot(identityVector1) == dotProduct1, "Vector {1, 1, 1} (dot) Vector {1, 0, 0} == 1");
+	assertTrue(identityVector1.dot(identityVector2) == dotProduct2, "Vector {1, 0, 0} (dot) Vector {0, 1, 0} == 0");
+	assertTrue(vectorSum3.dot(vectorSum3) == dotProduct3, "Vector {1, 1, 1} (dot) Vector {1, 1, 1} == 3");
+	assertError([&](){ vectorSum3.dot(smallVector); }, "Vector {1, 1, 1} (dot) Vector {}");
 
 	return 0;
 }
