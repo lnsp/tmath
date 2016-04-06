@@ -3,7 +3,6 @@
 
 #include <vector>
 #include <initializer_list>
-#include <cmath>
 #include <string>
 
 namespace TMath {

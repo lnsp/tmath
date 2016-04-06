@@ -249,7 +249,7 @@ TMath::DOUBLE TMath::equal(DOUBLE x, DOUBLE y) {
 	return equal(x, y, EQUAL_EPSILON);
 }
 TMath::DOUBLE TMath::equal(DOUBLE x, DOUBLE y, DOUBLE eps) {
-	return std::fabs(x - y) < eps;
+	return abs(x - y) < eps;
 }
 
 /* ========================================== DEGREE / RADIANT CONVERSION ================================*/
