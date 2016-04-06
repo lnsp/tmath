@@ -1,41 +1,32 @@
 <!DOCTYPE html>
-<html>
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <link href='https://fonts.googleapis.com/css?family=Architects+Daughter' rel='stylesheet' type='text/css'>
+    <meta charset="UTF-8">
+    <title>TMath by lnsp</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
     <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-    <title>TaylorMath by mooxmirror</title>
   </head>
-
   <body>
-    <header>
-      <div class="inner">
-        <h1>TaylorMath</h1>
-        <h2>A small math library based on Taylor series approximations.</h2>
-        <a href="https://github.com/mooxmirror/tmath" class="button"><small>View project on</small> GitHub</a>
-      </div>
-    </header>
+    <section class="page-header">
+      <h1 class="project-name">TMath</h1>
+      <h2 class="project-tagline">A small math library based on Taylor series approximations.</h2>
+      <a href="https://github.com/lnsp/tmath" class="btn">View on GitHub</a>
+      <a href="https://github.com/lnsp/tmath/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/lnsp/tmath/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <div id="content-wrapper">
-      <div class="inner clearfix">
-        <section id="main-content">
-          <h1>
-<a id="tmath-" class="anchor" href="#tmath-" aria-hidden="true"><span class="octicon octicon-link"></span></a>TMath <a href="https://travis-ci.org/mooxmirror/tmath"><img src="https://travis-ci.org/mooxmirror/tmath.svg?branch=stable" alt="Build status"></a>
+    <section class="main-content">
+      <h1>
+<a id="tmath-" class="anchor" href="#tmath-" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>TMath <a href="https://travis-ci.org/lnsp/tmath"><img src="https://travis-ci.org/lnsp/tmath.svg?branch=stable" alt="Build status"></a>
 </h1>
 
 <p>A small math function collection based on the Taylor expansion series.</p>
 
 <h2>
-<a id="building-the-project" class="anchor" href="#building-the-project" aria-hidden="true"><span class="octicon octicon-link"></span></a>Building the project</h2>
+<a id="building-the-project" class="anchor" href="#building-the-project" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Building the project</h2>
 
 <ul>
 <li>Download the source files from the <code>master</code>-tree</li>
@@ -47,12 +38,15 @@
 </ul>
 
 <h2>
-<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span class="octicon octicon-link"></span></a>How to use</h2>
+<a id="how-to-use" class="anchor" href="#how-to-use" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>How to use</h2>
 
 <p>Just build it as described above, include the header files and link the library. The library uses the types <code>TMath::DOUBLE</code>(<code>long double</code>) and <code>TMath::LONG</code>(<code>long long</code>) for parameters and return values.</p>
 
 <h2>
-<a id="what-is-included" class="anchor" href="#what-is-included" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is included?</h2>
+<a id="what-is-included" class="anchor" href="#what-is-included" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is included?</h2>
+
+<h3>
+<a id="mathematical-functions" class="anchor" href="#mathematical-functions" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Mathematical functions</h3>
 
 <table>
 <thead>
@@ -210,37 +204,118 @@
 <td align="center"><code>abs(DOUBLE x)</code></td>
 <td>absolute value of x</td>
 </tr>
+<tr>
+<td align="center"><code>equal(DOUBLE x, DOUBLE y)</code></td>
+<td>floating-point number equality</td>
+</tr>
+<tr>
+<td align="center"><code>equal(DOUBLE x, DOUBLE y, DOUBLE eps)</code></td>
+<td>floating-point number equality with a variance of epsilon</td>
+</tr>
+</tbody>
+</table>
+
+<h3>
+<a id="vector-class" class="anchor" href="#vector-class" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Vector class</h3>
+
+<p>To initialize a new vector just use initializer lists (like <code>Vector {1, 2, 3}</code>) or create a null-vector using <code>Vector(n)</code> (where n is the number of dimensions).</p>
+
+<table>
+<thead>
+<tr>
+<th>Operation</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>a[n]</code></td>
+<td>Access the n-th element of the vector <code>a</code>
+</td>
+</tr>
+<tr>
+<td><code>a + b</code></td>
+<td>Adds vector <code>a</code> and <code>b</code>
+</td>
+</tr>
+<tr>
+<td><code>a - b</code></td>
+<td>Subtracts vector <code>a</code> from <code>b</code>
+</td>
+</tr>
+<tr>
+<td><code>a * s</code></td>
+<td>Scales the vector by the factor <code>s</code>
+</td>
+</tr>
+<tr>
+<td><code>a / s</code></td>
+<td>Scales the vector by the factor <code>1 / s</code>
+</td>
+</tr>
+<tr>
+<td><code>a == b</code></td>
+<td>Tests if vector <code>a</code> is equal to <code>b</code>
+</td>
+</tr>
+<tr>
+<td><code>a != b</code></td>
+<td>Tests if vector <code>a</code> is not equal to <code>b</code>
+</td>
+</tr>
+<tr>
+<td><code>a.equal(b, e)</code></td>
+<td>Tests if the vector <code>a</code> is equal to <code>b</code> with the accuracy <code>e</code>
+</td>
+</tr>
+<tr>
+<td><code>a.dot(b)</code></td>
+<td>Dot product of <code>a</code> and <code>b</code>.</td>
+</tr>
+<tr>
+<td><code>a.cross(b)</code></td>
+<td>Cross product of <code>a</code> and <code>b</code>
+</td>
+</tr>
+<tr>
+<td><code>a.norm()</code></td>
+<td>Normalized copy of the vector <code>a</code>
+</td>
+</tr>
+<tr>
+<td><code>a.length()</code></td>
+<td>Length of vector <code>a</code>
+</td>
+</tr>
+<tr>
+<td><code>a.dim()</code></td>
+<td>Dimensions of vector <code>a</code>
+</td>
+</tr>
+<tr>
+<td><code>a.to_string()</code></td>
+<td>Generates a string representation of the vector <code>a</code>
+</td>
+</tr>
 </tbody>
 </table>
 
 <h2>
-<a id="what-is-planned" class="anchor" href="#what-is-planned" aria-hidden="true"><span class="octicon octicon-link"></span></a>What is planned?</h2>
+<a id="what-is-planned" class="anchor" href="#what-is-planned" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>What is planned?</h2>
 
 <ul>
 <li>Statistics (planned for v0.3)</li>
-<li>Vectors (planned for v0.2)</li>
-<li>Matrices (planned for v0.2)</li>
-<li>Vector operations (planned for v0.2)</li>
-<li>Matrix operations (planned for v0.2)</li>
+<li>Matrices (planned for v0.3)</li>
+<li>Matrix operations (planned for v0.3)</li>
 </ul>
-        </section>
 
-        <aside id="sidebar">
-          <a href="https://github.com/mooxmirror/tmath/zipball/master" class="button">
-            <small>Download</small>
-            .zip file
-          </a>
-          <a href="https://github.com/mooxmirror/tmath/tarball/master" class="button">
-            <small>Download</small>
-            .tar.gz file
-          </a>
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/lnsp/tmath">TMath</a> is maintained by <a href="https://github.com/lnsp">lnsp</a>.</span>
 
-          <p class="repo-owner"><a href="https://github.com/mooxmirror/tmath"></a> is maintained by <a href="https://github.com/mooxmirror">mooxmirror</a>.</p>
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
 
-          <p>This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the Architect theme by <a href="https://twitter.com/jasonlong">Jason Long</a>.</p>
-        </aside>
-      </div>
-    </div>
+    </section>
 
   
   </body>
