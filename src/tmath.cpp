@@ -154,7 +154,11 @@ TMath::DOUBLE TMath::sqrt(DOUBLE x)
 }
 TMath::DOUBLE TMath::root(DOUBLE x, DOUBLE n)
 {
-	return pow(x, 1 / n);
+	if (x > 0) {
+		return pow(x, 1 / n);
+	} else {
+		return 0;
+	}
 }
 TMath::DOUBLE TMath::ln(DOUBLE x)
 {
@@ -382,7 +386,9 @@ TMath::DOUBLE TMath::Vector::sum() const {
 TMath::Vector TMath::Vector::norm() const {
 	int d = dim();
 	if (d == 0) throw BAD_OPERATION;
-	return *this / length();
+	DOUBLE l = length();
+	if (l == 0) throw ZERO_LENGTH;
+	return *this / l;
 }
 
 // length operator calculates the length of the vector.
