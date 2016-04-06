@@ -40,6 +40,6 @@ void TMathTest::assertError(std::function<void ()> func, std::string expression)
 		std::cout << "Assert: " << expression << " failed" << std::endl;
 		exit(1);
 	} catch (std::string err) {
-		std::cout << "Test (" << expression << ") passed" << std::endl;
+		std::cout << "Error test (" << expression << ") passed with message '" << err << "'" << std::endl;
 	}
 };
