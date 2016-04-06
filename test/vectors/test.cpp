@@ -87,5 +87,14 @@ int main(int argc, char const *argv[]) {
 	assertTrue(vectorSum3.sum() == sum2, "sum({1, 1, 1}) == 3");
 	assertTrue(nullVector1.sum() == sum3, "sum({0, 0, 0}) == 0");
 
+	// check norm operation
+	Vector normVector1 {2, 2, 1};
+	Vector normedVector1 {2.0/3.0, 2.0/3.0, 1.0/3.0};
+	assertTrue(identityVector1.norm() == identityVector1, "norm({1, 0, 0}) == {1, 0, 0}");
+	assertTrue(identityVector2.norm() == identityVector2, "norm({0, 1, 0}) == {0, 1, 0}");
+	assertTrue(identityVector3.norm() == identityVector3, "norm({0, 0, 1}) == {0, 0, 1}");
+	assertTrue(normVector1.norm() == normedVector1, "norm({2, 2, 1}) == {2/3, 2/3, 1/3}");
+	assertError([&](){ smallVector.norm(); }, "norm(Vector(0))");
+
 	return 0;
 }
