@@ -382,10 +382,7 @@ TMath::DOUBLE TMath::Vector::sum() const {
 TMath::Vector TMath::Vector::norm() const {
 	int d = dim();
 	if (d == 0) throw BAD_OPERATION;
-	DOUBLE l = length();
-	Vector b(d);
-	for (unsigned int i = 0; i < d; i++) b[i] = elements[i] / l;
-	return b;
+	return *this / length();
 }
 
 // length operator calculates the length of the vector.
