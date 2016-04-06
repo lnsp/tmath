@@ -12,6 +12,7 @@ A small math function collection based on the Taylor expansion series.
 Just build it as described above, include the header files and link the library. The library uses the types `TMath::DOUBLE`(`long double`) and `TMath::LONG`(`long long`) for parameters and return values.
 
 ## What is included?
+### Mathematical functions
 
 Function                                | Description
 :-------------------------------------: | ---------------------------------------------------------
@@ -55,9 +56,27 @@ Function                                | Description
 `equal(DOUBLE x, DOUBLE y)`             | floating-point number equality
 `equal(DOUBLE x, DOUBLE y, DOUBLE eps)` | floating-point number equality with a variance of epsilon
 
+### Vector class
+To initialize a new vector just use initializer lists (like `Vector {1, 2, 3}`) or create a null-vector using `Vector(n)` (where n is the number of dimensions).
+
+Operation       | Description
+--------------- | -------------------------------------------------------------
+`a[n]`          | Access the n-th element of the vector `a`
+`a + b`         | Adds vector `a` and `b`
+`a - b`         | Subtracts vector `a` from `b`
+`a * s`         | Scales the vector by the factor `s`
+`a / s`         | Scales the vector by the factor `1 / s`
+`a == b`        | Tests if vector `a` is equal to `b`
+`a != b`        | Tests if vector `a` is not equal to `b`
+`a.equal(b, e)` | Tests if the vector `a` is equal to `b` with the accuracy `e`
+`a.dot(b)`      | Dot product of `a` and `b`.
+`a.cross(b)`    | Cross product of `a` and `b`
+`a.norm()`      | Normalized copy of the vector `a`
+`a.length()`    | Length of vector `a`
+`a.dim()`       | Dimensions of vector `a`
+`a.to_string()` | Generates a string representation of the vector `a`
+
 ## What is planned?
 - Statistics (planned for v0.3)
-- Vectors (planned for v0.2)
-- Matrices (planned for v0.2)
-- Vector operations (planned for v0.2)
-- Matrix operations (planned for v0.2)
+- Matrices (planned for v0.3)
+- Matrix operations (planned for v0.3)
