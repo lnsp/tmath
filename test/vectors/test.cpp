@@ -68,5 +68,15 @@ int main(int argc, char const *argv[]) {
 	assertTrue(vectorSum3.dot(vectorSum3) == dotProduct3, "{1, 1, 1} (dot) {1, 1, 1} == 3");
 	assertError([&](){ vectorSum3.dot(smallVector); }, "{1, 1, 1} (dot) Vector(0)");
 
+	// check cross product operator
+	Vector crossProduct1 {0, 0, 0};
+	Vector crossProduct2 {0, 1, -1};
+	Vector crossProduct3 {-1, 0, 1};
+	
+	assertTrue(vectorSum3.cross(vectorSum3) == crossProduct1, "{1, 1, 1} x {1, 1, 1} == {0, 0, 0}");
+	assertTrue(vectorSum3.cross(identityVector1) == crossProduct2, "{1, 1, 1} x {1, 0, 0} == {0, 1, -1}");
+	assertTrue(vectorSum3.cross(identityVector2) == crossProduct3, "{1, 1, 1} x {0, 1, 0} == {-1, 0, 1}");
+	assertError([&](){ vectorSum3.cross(smallVector);}, "{1, 1, 1} x Vector(0)");
+
 	return 0;
 }
