@@ -297,6 +297,16 @@ TMath::Vector TMath::Vector::operator-(const Vector &a) const {
 	return b;
 };
 
+// - operator calculates the inversion of the vector.
+TMath::Vector TMath::Vector::operator-() const {
+	int d = dim();
+	Vector b(d);
+	for (unsigned int i = 0; i < d; i++) {
+		b[i] = -elements.at(i);
+	}
+	return b;
+}
+
 // * operator scales the vector by the scalar.
 TMath::Vector TMath::Vector::operator*(const DOUBLE &scalar) const {
 	int d = dim();

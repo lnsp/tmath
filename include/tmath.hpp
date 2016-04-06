@@ -84,6 +84,7 @@ public:
 	Vector(const Vector& v) : elements(v.elements) {};
 	DOUBLE& operator[](const int&);
 	Vector operator+(const Vector&) const;
+	Vector operator-() const;
 	Vector operator-(const Vector&) const;
 	Vector operator*(const DOUBLE&) const;
 	Vector operator/(const DOUBLE&) const;
