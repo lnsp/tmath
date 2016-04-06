@@ -87,6 +87,16 @@ int main(int argc, char const *argv[]) {
 	assertTrue(vectorSum3.sum() == sum2, "sum({1, 1, 1}) == 3");
 	assertTrue(nullVector1.sum() == sum3, "sum({0, 0, 0}) == 0");
 
+	// check length operation
+	DOUBLE length1 = 1;
+	DOUBLE length2 = TMath::sqrt(3);
+	DOUBLE length3 = 0;
+
+	assertTrue(identityVector1.length() == length1, "length({1, 0, 0}) == 1");
+	assertTrue(vectorSum3.length() == length2, "length({1, 1, 1}) == sqrt(3)");
+	assertTrue(nullVector1.length() == length3, "length({0, 0, 0}) == 0");
+	assertError([&](){ smallVector.length(); }, "length({})");
+
 	// check norm operation
 	Vector normVector1 {2, 2, 1};
 	Vector normedVector1 {2.0/3.0, 2.0/3.0, 1.0/3.0};
