@@ -377,6 +377,23 @@ TMath::DOUBLE TMath::Vector::sum() const {
 	return sum;
 };
 
+// norm operator calculates a normalized vector.
+TMath::Vector TMath::Vector::norm() const {
+	int d = dim();
+	DOUBLE l = length();
+	Vector b(d);
+	for (unsigned int i = 0; i < d; i++) b[i] = elements[i] / l;
+	return b;
+}
+
+// length operator calculates the length of the vector.
+TMath::DOUBLE TMath::Vector::length() const {
+	int d = dim();
+	DOUBLE sum = 0;
+	for (unsigned int i = 0; i < d; i++) sum += elements[i] * elements[i];
+	return TMath::sqrt(sum);
+}
+
 // dim returns the vector tuple size.
 int TMath::Vector::dim() const {
 	return elements.size();
