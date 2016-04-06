@@ -381,6 +381,7 @@ TMath::DOUBLE TMath::Vector::sum() const {
 // norm operator calculates a normalized vector.
 TMath::Vector TMath::Vector::norm() const {
 	int d = dim();
+	if (d == 0) throw BAD_OPERATION;
 	DOUBLE l = length();
 	Vector b(d);
 	for (unsigned int i = 0; i < d; i++) b[i] = elements[i] / l;
@@ -390,6 +391,7 @@ TMath::Vector TMath::Vector::norm() const {
 // length operator calculates the length of the vector.
 TMath::DOUBLE TMath::Vector::length() const {
 	int d = dim();
+	if (d == 0) throw BAD_OPERATION;
 	DOUBLE sum = 0;
 	for (unsigned int i = 0; i < d; i++) sum += elements[i] * elements[i];
 	return TMath::sqrt(sum);
