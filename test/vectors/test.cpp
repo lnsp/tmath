@@ -72,11 +72,20 @@ int main(int argc, char const *argv[]) {
 	Vector crossProduct1 {0, 0, 0};
 	Vector crossProduct2 {0, 1, -1};
 	Vector crossProduct3 {-1, 0, 1};
-	
+
 	assertTrue(vectorSum3.cross(vectorSum3) == crossProduct1, "{1, 1, 1} x {1, 1, 1} == {0, 0, 0}");
 	assertTrue(vectorSum3.cross(identityVector1) == crossProduct2, "{1, 1, 1} x {1, 0, 0} == {0, 1, -1}");
 	assertTrue(vectorSum3.cross(identityVector2) == crossProduct3, "{1, 1, 1} x {0, 1, 0} == {-1, 0, 1}");
 	assertError([&](){ vectorSum3.cross(smallVector);}, "{1, 1, 1} x Vector(0)");
+
+	// check sum operation
+	DOUBLE sum1 = 1;
+	DOUBLE sum2 = 3;
+	DOUBLE sum3 = 0;
+
+	assertTrue(identityVector1.sum() == sum1, "sum({1, 0, 0}) == 1");
+	assertTrue(vectorSum3.sum() == sum2, "sum({1, 1, 1}) == 3");
+	assertTrue(nullVector1.sum() == sum3, "sum({0, 0, 0}) == 0");
 
 	return 0;
 }
