@@ -263,16 +263,20 @@ TMath::DOUBLE TMath::deg(DOUBLE rad)
 }
 /* ======================================== VECTOR IMPLEMENTATIONS =====================================*/
 
+// checkDimensions check if the dimensions of the vectors are equal.
 int TMath::Vector::checkDimensions(const Vector &a) const {
 	int mdim = dim();
 	if (mdim != a.dim()) throw TMath::DIMENSION_ERROR;
 	return mdim;
 }
 
+// [n] operator accesses the n-th element of the vector
 TMath::DOUBLE& TMath::Vector::operator[](const int &i) {
 	return elements.at(i);
 };
 
+// + operator sums up two vectors.
+// result = this + a
 TMath::Vector TMath::Vector::operator+(const Vector &a) const {
 	int d = checkDimensions(a);
 	Vector b(d);
@@ -282,6 +286,8 @@ TMath::Vector TMath::Vector::operator+(const Vector &a) const {
 	return b;
 };
 
+// - operator calculates the difference vector of the two vectors.
+// result = this - a
 TMath::Vector TMath::Vector::operator-(const Vector &a) const {
 	int d = checkDimensions(a);
 	Vector b(d);
@@ -291,6 +297,7 @@ TMath::Vector TMath::Vector::operator-(const Vector &a) const {
 	return b;
 };
 
+// * operator scales the vector by the scalar.
 TMath::Vector TMath::Vector::operator*(const DOUBLE &scalar) const {
 	int d = dim();
 	Vector b(d);
@@ -300,6 +307,7 @@ TMath::Vector TMath::Vector::operator*(const DOUBLE &scalar) const {
 	return b;
 };
 
+// / operator scales the vector by the inverse value of the scalar.
 TMath::Vector TMath::Vector::operator/(const DOUBLE &scalar) const {
 	int d = dim();
 	Vector b(d);
@@ -309,6 +317,7 @@ TMath::Vector TMath::Vector::operator/(const DOUBLE &scalar) const {
 	return b;
 };
 
+// equal checks for equality of both vectors.
 bool TMath::Vector::equal(const Vector &a, const DOUBLE &eps) const {
 	int d = checkDimensions(a);
 	for (unsigned int i = 0; i < d; i++) {
@@ -317,16 +326,19 @@ bool TMath::Vector::equal(const Vector &a, const DOUBLE &eps) const {
 	return true;
 };
 
+// == operator checks for equality with a constant accuracy of EQUAL_EPSILON.
 bool TMath::Vector::operator==(const Vector &a) const {
 	int d = checkDimensions(a);
 	return this->equal(a, EQUAL_EPSILON);
 };
 
+// != operator checks for inequality.
 bool TMath::Vector::operator!=(const Vector &a) const {
 	int d = checkDimensions(a);
 	return !this->equal(a, EQUAL_EPSILON);
 };
 
+// dot operator calculates the dot product of the two vectors.
 TMath::DOUBLE TMath::Vector::dot(const Vector &a) const {
 	int d = checkDimensions(a);
 	Vector b(d);
@@ -335,6 +347,7 @@ TMath::DOUBLE TMath::Vector::dot(const Vector &a) const {
 	return sum;
 };
 
+// cross operator calculates the cross product of the two vectors.
 TMath::Vector TMath::Vector::cross(const Vector &a) const {
 	int d = checkDimensions(a);
 	if (d != 3) throw BAD_OPERATION;
@@ -346,6 +359,7 @@ TMath::Vector TMath::Vector::cross(const Vector &a) const {
 	return b;
 };
 
+// sum operator calculates the element sum of the vector.
 TMath::DOUBLE TMath::Vector::sum() const {
 	int d = dim();
 	DOUBLE sum = 0;
@@ -353,6 +367,7 @@ TMath::DOUBLE TMath::Vector::sum() const {
 	return sum;
 };
 
+// dim returns the vector tuple size.
 int TMath::Vector::dim() const {
 	return elements.size();
 }
