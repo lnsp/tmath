@@ -1,4 +1,5 @@
 #include "tmath.hpp"
+#include <sstream>
 
 /* ================================ SINE ======================================== */
 TMath::DOUBLE TMath::sin(DOUBLE x)
@@ -397,4 +398,15 @@ TMath::DOUBLE TMath::Vector::length() const {
 // dim returns the vector tuple size.
 int TMath::Vector::dim() const {
 	return elements.size();
+}
+
+// to_string returns a string representation of the vector.
+std::string TMath::Vector::to_string() const {
+	std::stringstream stream;
+	stream << "{";
+	int d = dim();
+	for (unsigned int i = 0; i < d - 1; i++) stream << elements[i] << ", ";
+	if (d > 0) stream << elements[d-1];
+	stream << "}";
+	return stream.str();
 }

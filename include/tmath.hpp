@@ -96,6 +96,7 @@ public:
 	Vector norm() const;
 	DOUBLE length() const;
 	int dim() const;
+	std::string to_string() const;
 };
 }
 
