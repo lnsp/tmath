@@ -1,19 +1,41 @@
 # Compiler flags
-CFLAGS=-I./include -std=c++11 -Wall
-CFLAGS_LIB=-I./include -std=c++11 -c
-CFLAGS_TEST=./build/libtmath.a test/tmath_test.cpp
+# build directory
+BDIR=build
+# object directory
+ODIR=objects
+# source directory
+SDIR=src
+# include directory
+IDIR=include
+# test directory
+TDIR=test
 
-all: lib test
-	@echo Done.
+LIB=$(BDIR)/libtmath.a
+INC=-I$(IDIR)
+CFLAGS=-std=c++11 -Wall
+CFLAGS_TEST=$(INC) $(LIB) test/tmath_test.cpp
 
-lib: build_folder tmath.o
-	ar rcs build/libtmath.a build/tmath.o
+_OBJECTS= abs.o cosecant.o cosine.o cotangent.o degrad.o equality.o \
+		  explog.o factorial.o fcm.o power.o roots.o secant.o sine.o \
+		  tangent.o vector.o
+OBJECTS=$(patsubst %,$(ODIR)/%,$(_OBJECTS))
 
+all: folders $(LIB) test
+
+folders:
+	@mkdir -p $(BDIR) $(ODIR)
+	
+$(ODIR)/%.o: $(SDIR)/%.cpp
+	$(CC) -c $(INC) -o $@ $< $(CFLAGS)
+
+$(LIB): $(OBJECTS)
+	ar rvs $(LIB) $^
+
+clean:
+	rm -rf $(BDIR) $(ODIR)
+	
 test: test_sine test_cosine test_tangent test_cosecant test_cotangent test_secant test_rad_deg test_abs test_factorial test_roots test_power test_exp_log test_vectors
 	@echo all tests passed
-
-build_folder:
-	@mkdir -p build
 
 test_folder:
 	@mkdir -p build/test
@@ -69,9 +91,3 @@ test_exp_log: test_folder
 test_vectors: test_folder
 	$(CC) $(CFLAGS) test/vectors/test.cpp -o build/test/vectors $(CFLAGS_TEST)
 	@build/test/vectors
-
-tmath.o: build_folder
-	$(CC) $(CFLAGS_LIB) src/tmath.cpp -o build/tmath.o
-
-clean: build_folder
-	rm build -f -r
