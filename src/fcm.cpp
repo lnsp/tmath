@@ -21,7 +21,11 @@ TMath::LONG TMath::ceil(const DOUBLE &x)
 	if (x < 0) {
 		return truncated;
 	} else {
-		return truncated + 1;
+		if (truncated < x) {
+			return truncated + 1;
+		} else {
+			return truncated;
+		}
 	}
 }
 TMath::DOUBLE TMath::mod(const DOUBLE &x, const DOUBLE &y)
