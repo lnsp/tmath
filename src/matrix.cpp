@@ -20,3 +20,9 @@ TMath::Matrix::Matrix(const int& width, const int& height) {
 		elements[index] = std::vector<DOUBLE>(width);
 	}
 }
+
+TMath::Matrix::Matrix(const Matrix& m) {
+	size_t height = m.elements.size();
+	elements = std::vector<std::vector<DOUBLE>>(m.elements.size());
+	for (size_t index = 0; index < height; index++) elements[index] = std::vector<DOUBLE>(m.elements[index]);
+}
