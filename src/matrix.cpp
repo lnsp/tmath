@@ -6,7 +6,7 @@ TMath::Matrix::Matrix(std::initializer_list<std::initializer_list<DOUBLE>> list)
 	if (height < 1) throw TMath::EMPTY_MATRIX_ERROR;
 
 	elements = std::vector<std::vector<DOUBLE>>(height);
-	for (auto& row : list) elements[index++] = std::vector<DOUBLE>(row.size());
+	for (auto& row : list) elements[index++] = std::vector<DOUBLE>(row);
 
 	size_t common = elements[index-1].size();
 	for (auto& row : elements) if (row.size() != common) throw TMath::DIMENSION_ERROR;
