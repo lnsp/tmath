@@ -100,6 +100,15 @@ public:
 	int dim() const;
 	std::string to_string() const;
 };
+
+class Matrix {
+private:
+	std::vector<std::vector<DOUBLE>> elements;
+public:
+	Matrix(std::initializer_list<std::initializer_list<DOUBLE>>);
+	Matrix(const int& d);
+	Matrix(const Matrix& v);
+};
 }
 
 #endif
