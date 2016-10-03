@@ -3,7 +3,7 @@
 
 TMath::Matrix::Matrix(std::initializer_list<std::initializer_list<DOUBLE>> list) {
 	size_t height = list.size(), index = 0;
-	if (height < 1) throw TMath::DIMENSION_ERROR;
+	if (height < 1) throw TMath::EMPTY_MATRIX_ERROR;
 
 	elements = std::vector<std::vector<DOUBLE>>(height);
 	for (auto& row : list) elements[index++] = std::vector<DOUBLE>(row.size());
@@ -13,7 +13,7 @@ TMath::Matrix::Matrix(std::initializer_list<std::initializer_list<DOUBLE>> list)
 }
 
 TMath::Matrix::Matrix(const int& width, const int& height) {
-	if (width < 1 || height < 1) throw TMath::DIMENSION_ERROR;
+	if (width < 1 || height < 1) throw TMath::EMPTY_MATRIX_ERROR;
 
 	elements = std::vector<std::vector<DOUBLE>>(height);
 	for (size_t index = 0; index < width; index++) {
