@@ -18,6 +18,7 @@ const DOUBLE E =  2.718281828459045235360287471352662497757247093699959574966967
 const DOUBLE EQUAL_EPSILON = 1e-7;
 // Mismatched dimensions error for vectors and matrices
 const std::string DIMENSION_ERROR = "Mismatched dimensions";
+const std::string EMPTY_MATRIX_ERROR = "Empty matrix";
 // Error if the operation is not applicable
 const std::string BAD_OPERATION = "Operation is not applicable";
 // Vector length is equal to zero
