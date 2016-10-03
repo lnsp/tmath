@@ -24,7 +24,7 @@ TUTILS_OBJ=$(ODIR)/$(TUTILS).o
 
 _UNITS= abs.o cosecant.o cosine.o cotangent.o degrad.o equality.o \
 		explog.o factorial.o fcm.o power.o roots.o secant.o sine.o \
-		tangent.o vector.o
+		tangent.o vector.o matrix.o
 OBJECTS=$(patsubst %,$(ODIR)/%,$(_UNITS))
 TESTS=$(patsubst %,$(ODIR)/test_%,$(_UNITS))
 

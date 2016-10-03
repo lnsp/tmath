@@ -4,6 +4,7 @@
 #include <vector>
 #include <initializer_list>
 #include <string>
+#include <utility>
 
 namespace TMath {
 // Shortform for long long
@@ -18,6 +19,7 @@ const DOUBLE E =  2.718281828459045235360287471352662497757247093699959574966967
 const DOUBLE EQUAL_EPSILON = 1e-7;
 // Mismatched dimensions error for vectors and matrices
 const std::string DIMENSION_ERROR = "Mismatched dimensions";
+const std::string EMPTY_MATRIX_ERROR = "Empty matrix";
 // Error if the operation is not applicable
 const std::string BAD_OPERATION = "Operation is not applicable";
 // Vector length is equal to zero
@@ -98,6 +100,23 @@ public:
 	Vector norm() const;
 	DOUBLE length() const;
 	int dim() const;
+	std::string to_string() const;
+};
+
+class Matrix {
+private:
+	std::vector<std::vector<DOUBLE>> elements;
+	std::pair<size_t, size_t> validate(const Matrix&) const;
+public:
+	Matrix(std::initializer_list<std::initializer_list<DOUBLE>>);
+	Matrix(const int& width, const int& height);
+	Matrix(const Matrix& m);
+	std::vector<DOUBLE>& operator[](const int&);
+	bool equal(const Matrix&, const DOUBLE&) const;
+	bool operator==(const Matrix&) const;
+	bool operator!=(const Matrix&) const;
+	size_t width() const;
+	size_t height() const;
 	std::string to_string() const;
 };
 }
