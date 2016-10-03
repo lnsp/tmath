@@ -107,7 +107,7 @@ private:
 public:
 	Matrix(std::initializer_list<std::initializer_list<DOUBLE>>);
 	Matrix(const int& width, const int& height);
-	Matrix(const Matrix& v);
+	Matrix(const Matrix& m);
 };
 }
 
