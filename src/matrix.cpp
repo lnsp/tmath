@@ -53,13 +53,27 @@ bool TMath::Matrix::operator==(const Matrix& m) const {
 bool TMath::Matrix::operator!=(const Matrix& m) const {
 	return !equal(m, EQUAL_EPSILON);
 }
-	
+
 size_t TMath::Matrix::width() const {
 	return elements[0].size();
 }
 
 size_t TMath::Matrix::height() const {
 	return elements.size();
+}
+
+TMath::Matrix TMath::Matrix::operator+(const Matrix& a) const {
+	size_t w = width(), h = height();
+	if (a.width() != w || a.height() != h) throw TMath::DIMENSION_ERROR;
+
+	Matrix result(a);
+	for (size_t i = 0; i < h; i++) {
+		for (size_t j = 0; j < w; j++) {
+			result[i][j] += elements[i][j];
+		}
+	}
+
+	return result;
 }
 
 std::string TMath::Matrix::to_string() const {

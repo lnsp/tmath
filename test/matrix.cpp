@@ -4,7 +4,6 @@ This test checks the matrix functionality.
 
 #include "tmath.hpp"
 #include "tmath_test.hpp"
-#include <iostream>
 
 int main(int argc, char const *argv[]) {
 	using TMathTest::assertTrue;
@@ -15,7 +14,10 @@ int main(int argc, char const *argv[]) {
 	Matrix nullMatrix1(1, 1);
 	Matrix nullMatrix2{{0}};
 	Matrix identityMatrix{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
-	
+	Matrix reverseMatrix{{-1, 0, 0}, {0, -1, 0}, {0, 0, -1}};
+	Matrix valueMatrix{{2, 0, 0}, {0, 2, 0}, {0, 0, 2}};
+	Matrix nullMatrix3(3, 3);
+
 	// Check for constructor errors
 	assertTrue(nullMatrix1 == nullMatrix2, "{{0}} == Matrix(1, 1)");
 	assertTrue(!(nullMatrix1 != nullMatrix2), "!{{0}} != Matrix(1, 1)");
@@ -43,6 +45,12 @@ int main(int argc, char const *argv[]) {
 	// Check for to_string
 	assertTrue(nullMatrix1.to_string() == "{[0]}", "str({{0}}) == '{[0]}'");
 	assertTrue(identityMatrix.to_string() == "{[1, 0, 0], [0, 1, 0], [0, 0, 1]}", "str(Identity) == '{[1, 0, 0], [0, 1, 0], [0, 0, 1]}'");
+
+	// Check for matrix + matrix
+	assertError([&](){ nullMatrix1 + identityMatrix; }, "Dimension mismatch by 1x1 + 3x3");
+	assertTrue(nullMatrix1 + nullMatrix2 == nullMatrix1, "{{0}} + Matrix(1, 1) == {{0}}");
+	assertTrue(identityMatrix + identityMatrix == valueMatrix, "Identity + Identity = 2*Identity");
+	assertTrue(reverseMatrix + identityMatrix == nullMatrix3, "Identity + (-Identity) = Matrix(3, 3)");
 
 	return 0;
 }
