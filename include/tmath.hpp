@@ -115,6 +115,7 @@ public:
 	bool equal(const Matrix&, const DOUBLE&) const;
 	bool operator==(const Matrix&) const;
 	bool operator!=(const Matrix&) const;
+	Matrix operator+(const Matrix&) const;
 	size_t width() const;
 	size_t height() const;
 	std::string to_string() const;
