@@ -76,6 +76,20 @@ TMath::Matrix TMath::Matrix::operator+(const Matrix& a) const {
 	return result;
 }
 
+TMath::Matrix TMath::Matrix::operator-(const Matrix& a) const {
+	size_t w = width(), h = height();
+	if (a.width() != w || a.height() != h) throw TMath::DIMENSION_ERROR;
+
+	Matrix result(*this);
+	for (size_t i = 0; i < h; i++) {
+		for (size_t j = 0; j < w; j++) {
+			result[i][j] -= a.elements[i][j];
+		}
+	}
+
+	return result;
+}
+
 std::string TMath::Matrix::to_string() const {
 	size_t w = width(), h = height();
 	std::stringstream stream;

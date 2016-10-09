@@ -52,5 +52,11 @@ int main(int argc, char const *argv[]) {
 	assertTrue(identityMatrix + identityMatrix == valueMatrix, "Identity + Identity = 2*Identity");
 	assertTrue(reverseMatrix + identityMatrix == nullMatrix3, "Identity + (-Identity) = Matrix(3, 3)");
 
+	// Check for matrix - matrix
+	assertError([&](){ nullMatrix1 - identityMatrix; }, "Dimension mismatch by 1x1 - 3x3");
+	assertTrue(nullMatrix1 - nullMatrix2 == nullMatrix1, "{{0}} - Matrix(1, 1) == {{0}}");
+	assertTrue(identityMatrix - identityMatrix == nullMatrix3, "Identity - Identity = Matrix(3, 3)");
+	assertTrue(identityMatrix - reverseMatrix == valueMatrix, "Identity - (-Identity) = 2*Identity");
+
 	return 0;
 }
