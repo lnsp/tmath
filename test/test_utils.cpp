@@ -25,6 +25,20 @@ void TMathTest::assert(TMath::DOUBLE value, TMath::DOUBLE correct, std::string e
 	}
 }
 
+void TMathTest::assert(TMath::Matrix a, TMath::Matrix b, std::string expression) {
+	assert(a, b, expression, TMathTest::DEFAULT_TOLERANCE);
+}
+
+void TMathTest::assert(TMath::Matrix a, TMath::Matrix b, std::string expression, TMath::DOUBLE tolerance) {
+	if (!a.equal(b, tolerance)) {
+        std::cout << "Assert: " << expression << " failed" << std::endl;
+		std::cout << a.to_string() << " is not equal to " << b.to_string() << std::endl;
+        exit(1);
+    } else {
+		std::cout << "Test (" << expression << ") passed" << std::endl;
+	}
+}
+
 void TMathTest::assertTrue(bool b, std::string expression) {
 	if (!b) {
         std::cout << "Assert: " << expression << " failed" << std::endl;
