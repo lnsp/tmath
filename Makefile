@@ -17,7 +17,7 @@ LIB=$(LDIR)/libtmath.a
 # include flag
 INC=-I$(IDIR)
 # other compiler flags
-CFLAGS=-std=c++11
+CFLAGS=-std=c++11 -g -gstabs
 
 TUTILS=tutils
 TUTILS_OBJ=$(ODIR)/$(TUTILS).o
@@ -46,7 +46,7 @@ utils:
 
 # build and run tests
 $(ODIR)/test_%.o: $(TDIR)/%.cpp
-	$(CC) $(INC) $(CFLAGS) -o $@ $< $(LIB) $(TUTILS_OBJ)
+	$(CC) $(INC) $(CFLAGS) -o $@ $< $(TUTILS_OBJ) $(LIB)
 	@$@
 	
 # build objects
