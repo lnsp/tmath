@@ -76,7 +76,21 @@ Operation       | Description
 `a.dim()`       | Dimensions of vector `a`
 `a.to_string()` | Generates a string representation of the vector `a`
 
+### Matrix class
+To initialize a new matrix you can use initializer lists (like `Matrix{{1, 0}, {0, 1}}`) or create a null-matrix using `Matrix(x, y)` (where x is the number of cols and y the number of rows).
+
+Operation       | Description
+--------------- | -------------------------------------------------------------
+`m[n]`          | Access the n-th row of the matrix
+`m[n][x]`       | Access the element at row n and col x
+`a + b`         | Add the matrices
+`a - b`         | Subtract the matrices
+`a.equal(b, e)` | Tests if the matrix `a` is equal to `b` with the accuary `e`
+`a == b`        | Tests if the matrix `a` is equal to `b`
+`a != b`        | Tests if the matrix `a` is not equal to `b`
+`a.width()`     | Get the number of matrix cols
+`a.height()`    | Get the number of matrix rows
+`a.to_string()` | Generate a string representation of the matrix
+
 ## What is planned?
-- Statistics (planned for v0.3)
-- Matrices (planned for v0.3)
-- Matrix operations (planned for v0.3)
+- Statistics
