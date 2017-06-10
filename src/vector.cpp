@@ -16,7 +16,7 @@ TMath::DOUBLE& TMath::Vector::operator[](const int &i) {
 
 // at operation accesses the n-th element of the vector by value.
 TMath::DOUBLE TMath::Vector::at(const int &i) const {
-	if (i >= dim()) throw BAD_OPERATION;
+	if (i >= dim() || i < 0) throw BAD_OPERATION;
 	return elements.at(i);
 }
 
