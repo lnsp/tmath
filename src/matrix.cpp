@@ -6,28 +6,28 @@ TMath::Matrix::Matrix(std::initializer_list<std::initializer_list<DOUBLE>> list)
 	int height = list.size(), index = 0;
 	if (height < 1) throw TMath::EMPTY_MATRIX_ERROR;
 
-	elements = std::vector<std::vector<DOUBLE>>(height);
-	for (auto& row : list) elements[index++] = std::vector<DOUBLE>(row);
+	elements = std::vector<Vector>(height);
+	for (auto& row : list) elements[index++] = Vector(row);
 
-	int common = elements[index-1].size();
-	for (auto& row : elements) if (row.size() != common) throw TMath::DIMENSION_ERROR;
+	int common = elements[index-1].dim();
+	for (auto& row : elements) if (row.dim() != common) throw TMath::DIMENSION_ERROR;
 }
 
 // Initialize a new matrix with a specific width and height.
 TMath::Matrix::Matrix(const int& width, const int& height) {
 	if (width < 1 || height < 1) throw TMath::EMPTY_MATRIX_ERROR;
 
-	elements = std::vector<std::vector<DOUBLE>>(height);
+	elements = std::vector<Vector>(height);
 	for (int index = 0; index < width; index++) {
-		elements[index] = std::vector<DOUBLE>(width);
+		elements[index] = Vector(width);
 	}
 }
 
 // Initialize a new matrix as a copy of the matrix m.
 TMath::Matrix::Matrix(const Matrix& m) {
 	int height = m.elements.size();
-	elements = std::vector<std::vector<DOUBLE>>(m.elements.size());
-	for (int index = 0; index < height; index++) elements[index] = std::vector<DOUBLE>(m.elements[index]);
+	elements = std::vector<Vector>(m.elements.size());
+	for (int index = 0; index < height; index++) elements[index] = Vector(m.elements[index]);
 }
 
 // Check if the two matrices have the same dimensions.
@@ -38,7 +38,7 @@ std::pair<int, int> TMath::Matrix::validate(const Matrix& m) const {
 }
 
 // Access a matrix row.
-std::vector<TMath::DOUBLE>& TMath::Matrix::operator[](const int& i) {
+TMath::Vector& TMath::Matrix::operator[](const int& i) {
 	return elements[i];
 }
 
@@ -47,7 +47,7 @@ bool TMath::Matrix::equal(const Matrix& m, const DOUBLE& eps) const {
 	std::pair<int, int> dimensions = validate(m);
 
 	for (int i = 0; i < dimensions.second; i++) for (int j = 0; j < dimensions.first; j++) 
-		if (!TMath::equal(elements[i][j], m.elements[i][j], eps)) return false;
+		if (!TMath::equal(elements[i].at(j), m.elements[i].at(j), eps)) return false;
 
 	return true;
 }
@@ -64,7 +64,7 @@ bool TMath::Matrix::operator!=(const Matrix& m) const {
 
 // Get the matrix col count.
 int TMath::Matrix::width() const {
-	return elements[0].size();
+	return elements[0].dim();
 }
 
 // Get the matrix row count.
@@ -80,7 +80,7 @@ TMath::Matrix TMath::Matrix::operator+(const Matrix& a) const {
 	Matrix result(a);
 	for (int i = 0; i < h; i++) {
 		for (int j = 0; j < w; j++) {
-			result[i][j] += elements[i][j];
+			result[i][j] += elements[i].at(j);
 		}
 	}
 
@@ -95,7 +95,7 @@ TMath::Matrix TMath::Matrix::operator-(const Matrix& a) const {
 	Matrix result(*this);
 	for (int i = 0; i < h; i++) {
 		for (int j = 0; j < w; j++) {
-			result[i][j] -= a.elements[i][j];
+			result[i][j] -= a.elements[i].at(j);
 		}
 	}
 
@@ -109,11 +109,26 @@ std::string TMath::Matrix::to_string() const {
 	stream << "{[";
 	for (int i = 0; i < h; i++) {
 		for (int j = 0; j < w-1; j++) {
-			stream << elements[i][j] << ", ";
+			stream << elements[i].at(j) << ", ";
 		}
-		stream << elements[i][w-1];
+		stream << elements[i].at(w-1);
 		if (i < h-1) stream << "], [";
 	}
 	stream << "]}";
 	return stream.str();
+}
+
+// Multiply a matrix with a vector.
+TMath::Vector TMath::Matrix::operator*(const Vector& a) const {
+	int w = width(), wv = a.dim(), h = height();
+	if (w != h) throw TMath::DIMENSION_ERROR;
+
+	Vector result(h);
+	for (int i = 0; i < h; i++) {
+		for (int j = 0; j < w; j++) {
+			result[i] += elements[i].at(j) * a.at(j);
+		}
+	}
+
+	return result;
 }

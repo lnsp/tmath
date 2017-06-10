@@ -8,10 +8,15 @@ int TMath::Vector::checkDimensions(const Vector &a) const {
 	return mdim;
 }
 
-// [n] operator accesses the n-th element of the vector
+// [n] operator accesses the n-th element of the vector by reference.
 TMath::DOUBLE& TMath::Vector::operator[](const int &i) {
 	return elements.at(i);
 };
+
+// at operation accesses the n-th element of the vector by value.
+TMath::DOUBLE TMath::Vector::at(const int &i) const {
+	return elements.at(i);
+}
 
 // + operator sums up two vectors.
 // result = this + a
