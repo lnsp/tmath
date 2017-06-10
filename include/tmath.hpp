@@ -112,7 +112,7 @@ private:
 	std::pair<int, int> validate(const Matrix&) const;
 public:
 	Matrix(std::initializer_list<std::initializer_list<DOUBLE>>);
-	Matrix(const int& width, const int& height);
+	Matrix(const int& rows, const int& cols);
 	Matrix(const Matrix& m);
 	Vector& operator[](const int&);
 	Vector col(const int&) const;

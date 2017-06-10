@@ -13,13 +13,13 @@ TMath::Matrix::Matrix(std::initializer_list<std::initializer_list<DOUBLE>> list)
 	for (auto& row : elements) if (row.dim() != common) throw TMath::DIMENSION_ERROR;
 }
 
-// Initialize a new matrix with a specific width and height.
-TMath::Matrix::Matrix(const int& width, const int& height) {
-	if (width < 1 || height < 1) throw TMath::EMPTY_MATRIX_ERROR;
+// Initialize a new matrix with a specific rows and cols.
+TMath::Matrix::Matrix(const int& rows, const int& cols) {
+	if (rows < 1 || cols < 1) throw TMath::EMPTY_MATRIX_ERROR;
 
-	elements = std::vector<Vector>(height);
-	for (int index = 0; index < width; index++) {
-		elements[index] = Vector(width);
+	elements = std::vector<Vector>(rows);
+	for (int index = 0; index < rows; index++) {
+		elements[index] = Vector(cols);
 	}
 }
 
