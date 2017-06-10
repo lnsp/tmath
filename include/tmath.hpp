@@ -123,6 +123,7 @@ public:
 	bool operator!=(const Matrix&) const;
 	Matrix operator+(const Matrix&) const;
 	Matrix operator-(const Matrix&) const;
+	Matrix operator-() const;
 	Vector operator*(const Vector&) const;
 	Matrix operator*(const DOUBLE&) const;
 	Matrix operator*(const Matrix&) const;

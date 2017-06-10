@@ -125,6 +125,11 @@ TMath::Matrix TMath::Matrix::operator-(const Matrix& a) const {
 	return result;
 }
 
+// Invert matrice values.
+TMath::Matrix TMath::Matrix::operator-() const {
+	return *this * -1.0;
+}
+
 // Generate a string representation of the matrix.
 std::string TMath::Matrix::to_string() const {
 	int w = colCount(), h = rowCount();
