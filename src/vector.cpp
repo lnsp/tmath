@@ -10,13 +10,13 @@ int TMath::Vector::checkDimensions(const Vector &a) const {
 
 // [n] operator accesses the n-th element of the vector by reference.
 TMath::DOUBLE& TMath::Vector::operator[](const int &i) {
-	if (i >= dim()) throw BAD_OPERATION;
+	if (i >= dim() || i < 0) throw OUT_OF_BOUNDS;
 	return elements.at(i);
 };
 
 // at operation accesses the n-th element of the vector by value.
 TMath::DOUBLE TMath::Vector::at(const int &i) const {
-	if (i >= dim() || i < 0) throw BAD_OPERATION;
+	if (i >= dim() || i < 0) throw OUT_OF_BOUNDS;
 	return elements.at(i);
 }
 

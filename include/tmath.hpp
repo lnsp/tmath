@@ -20,6 +20,7 @@ const DOUBLE EQUAL_EPSILON = 1e-7;
 // Mismatched dimensions error for vectors and matrices
 const std::string DIMENSION_ERROR = "Mismatched dimensions";
 const std::string EMPTY_MATRIX_ERROR = "Empty matrix";
+const std::string OUT_OF_BOUNDS = "Index out of bounds";
 // Error if the operation is not applicable
 const std::string BAD_OPERATION = "Operation is not applicable";
 // Vector length is equal to zero
@@ -111,19 +112,23 @@ private:
 	std::pair<int, int> validate(const Matrix&) const;
 public:
 	Matrix(std::initializer_list<std::initializer_list<DOUBLE>>);
-	Matrix(const int& width, const int& height);
+	Matrix(const int& rows, const int& cols);
 	Matrix(const Matrix& m);
 	Vector& operator[](const int&);
-	Vector at(const int&) const;
+	Vector col(const int&) const;
+	Vector row(const int&) const;
 	DOUBLE at(const int&, const int&) const;
 	bool equal(const Matrix&, const DOUBLE&) const;
 	bool operator==(const Matrix&) const;
 	bool operator!=(const Matrix&) const;
 	Matrix operator+(const Matrix&) const;
 	Matrix operator-(const Matrix&) const;
+	Matrix operator-() const;
 	Vector operator*(const Vector&) const;
-	int width() const;
-	int height() const;
+	Matrix operator*(const DOUBLE&) const;
+	Matrix operator*(const Matrix&) const;
+	int rowCount() const;
+	int colCount() const;
 	std::string to_string() const;
 };
 }
