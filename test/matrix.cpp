@@ -45,10 +45,10 @@ int main(int argc, char const *argv[]) {
 	assertTrue(identityMatrix[1][1] == 1, "Identity[1][1] == 1");
 
 	// Check for width and heiht
-	assert(nullMatrix1.width(), 1, "{{0}}.width() == 1");
-	assert(nullMatrix2.height(), 1, "Matrix(1, 1).height() == 1");
-	assert(identityMatrix.width(), 3, "Identity.width() == 3");
-	assert(identityMatrix.height(), 3, "Identity.height() == 3");
+	assert(nullMatrix1.colCount(), 1, "{{0}}.colCount() == 1");
+	assert(nullMatrix2.rowCount(), 1, "Matrix(1, 1).rowCount() == 1");
+	assert(identityMatrix.colCount(), 3, "Identity.colCount() == 3");
+	assert(identityMatrix.rowCount(), 3, "Identity.rowCount() == 3");
 
 	// Check for to_string
 	assertTrue(nullMatrix1.to_string() == "{[0]}", "str({{0}}) == '{[0]}'");
@@ -83,6 +83,20 @@ int main(int argc, char const *argv[]) {
 	assert(nullMatrix1 * nullVector1, nullVector1, "Matrix(1, 1) * Vector{0} == Vector{0}");
 	assert(identityMatrix * countVector, countVector, "Identity * Vector{1, 2, 3} == Vector{1, 2, 3}");
 	assert(reverseMatrix * countVector, -countVector, "ReverseIdentity * Vector{1, 2, 3} == Vector{-1, -2, -3}");
+
+	// Check for matrix * matrix
+	assertError([&](){ identityMatrix * nullMatrix1; }, "Can not multiply Matrix(1, 1) with Matrix(3, 3)");
+	assertError([&](){ nullMatrix1 * identityMatrix; }, "Can not multiply Matrix(3, 3) with Matrix(1, 1)");
+	Matrix valueMatrix1{{3, 2, 1}, {1, 0, 2}};
+	Matrix valueMatrix2{{1, 2}, {0, 1}, {4, 0}};
+	Matrix valueMatrix3{{1, 2, 3}};
+	Matrix valueMatrix4{{1}, {2}, {3}};
+	Matrix resultMatrix1{{7, 8}, {9, 2}};
+	Matrix resultMatrix2{{14}};
+	assert(valueMatrix1 * valueMatrix2, resultMatrix1, "2x3 * 3x2 == 2x2");
+	assert(valueMatrix3 * valueMatrix4, resultMatrix2, "1x3 * 3x1 == 1x1");
+	assert(valueMatrix3 * identityMatrix, valueMatrix3, "1x3 * Identity == 1x3");
+	assert(identityMatrix * valueMatrix4, valueMatrix4, "Identity * 3x1 == 3x1");
 
 	return 0;
 }
