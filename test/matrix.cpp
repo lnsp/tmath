@@ -11,6 +11,7 @@ int main(int argc, char const *argv[]) {
 	using TMathTest::assertError;
 	using TMath::DOUBLE;
 	using TMath::Matrix;
+	using TMath::Vector;
 
 	Matrix nullMatrix1(1, 1);
 	Matrix nullMatrix2{{0}};
@@ -18,6 +19,12 @@ int main(int argc, char const *argv[]) {
 	Matrix reverseMatrix{{-1, 0, 0}, {0, -1, 0}, {0, 0, -1}};
 	Matrix valueMatrix{{2, 0, 0}, {0, 2, 0}, {0, 0, 2}};
 	Matrix nullMatrix3(3, 3);
+	Vector nullVector1{0};
+	Vector nullVector3{0, 0, 0};
+	Vector oneVector1{1};
+	Vector oneVector2{1, 0, 0};
+	Vector oneVector3{1, 1, 1};
+	Vector countVector{1, 2, 3};
 
 	// Check for constructor errors
 	assert(nullMatrix1, nullMatrix2, "{{0}} == Matrix(1, 1)");
@@ -58,6 +65,21 @@ int main(int argc, char const *argv[]) {
 	assert(nullMatrix1 - nullMatrix2, nullMatrix1, "{{0}} - Matrix(1, 1) == {{0}}");
 	assert(identityMatrix - identityMatrix, nullMatrix3, "Identity - Identity = Matrix(3, 3)");
 	assert(identityMatrix - reverseMatrix, valueMatrix, "Identity - (-Identity) = 2*Identity");
+
+	// Check for at
+	assertError([&](){ nullMatrix1.at(2); }, "Can not access index out of matrix Matrix(1, 1)[2]");
+	assertError([&](){ nullMatrix2.at(2, 2); }, "Can not access index out of matrix {{0}}[2, 2]");
+	assert(nullMatrix1.at(0), nullVector1, "Matrix(1, 1)[0] == Vector{0}");
+	assert(identityMatrix.at(0), oneVector2, "Identity[0] == Vector{1, 0, 0}");
+	assert(nullMatrix1.at(0, 0), 0, "Matrix(1, 1)[0, 0] == 0");
+	assert(identityMatrix.at(2, 2), 1, "Identity[2, 2] == 1");
+
+	// Check for matrix * vector
+	assertError([&](){ nullMatrix2 * oneVector2; }, "Can not multiply Matrix(1, 1) with Vector(3)");
+	assert(nullMatrix1 * oneVector1, nullVector1, "Matrix(1, 1) * Vector{1} == Vector{0}");
+	assert(nullMatrix1 * nullVector1, nullVector1, "Matrix(1, 1) * Vector{0} == Vector{0}");
+	assert(identityMatrix * countVector, countVector, "Identity * Vector{1, 2, 3} == Vector{1, 2, 3}");
+	assert(reverseMatrix * countVector, -countVector, "ReverseIdentity * Vector{1, 2, 3} == Vector{-1, -2, -3}");
 
 	return 0;
 }

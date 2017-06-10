@@ -82,10 +82,12 @@ private:
 	std::vector<DOUBLE> elements;
 	int checkDimensions(const Vector&) const;
 public:
+	Vector() {}
 	Vector(std::initializer_list<DOUBLE> list) : elements(list) {}
 	Vector(const int& d) : elements(d) {}
 	Vector(const Vector& v) : elements(v.elements) {};
 	DOUBLE& operator[](const int&);
+	DOUBLE at(const int&) const;
 	Vector operator+(const Vector&) const;
 	Vector operator-() const;
 	Vector operator-(const Vector&) const;
@@ -105,20 +107,23 @@ public:
 
 class Matrix {
 private:
-	std::vector<std::vector<DOUBLE>> elements;
-	std::pair<size_t, size_t> validate(const Matrix&) const;
+	std::vector<Vector> elements;
+	std::pair<int, int> validate(const Matrix&) const;
 public:
 	Matrix(std::initializer_list<std::initializer_list<DOUBLE>>);
 	Matrix(const int& width, const int& height);
 	Matrix(const Matrix& m);
-	std::vector<DOUBLE>& operator[](const int&);
+	Vector& operator[](const int&);
+	Vector at(const int&) const;
+	DOUBLE at(const int&, const int&) const;
 	bool equal(const Matrix&, const DOUBLE&) const;
 	bool operator==(const Matrix&) const;
 	bool operator!=(const Matrix&) const;
 	Matrix operator+(const Matrix&) const;
 	Matrix operator-(const Matrix&) const;
-	size_t width() const;
-	size_t height() const;
+	Vector operator*(const Vector&) const;
+	int width() const;
+	int height() const;
 	std::string to_string() const;
 };
 }
