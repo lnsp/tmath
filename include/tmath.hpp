@@ -125,8 +125,8 @@ public:
 	Matrix operator-(const Matrix&) const;
 	Vector operator*(const Vector&) const;
 	Matrix operator*(const Matrix&) const;
-	int width() const;
-	int height() const;
+	int rowCount() const;
+	int colCount() const;
 	std::string to_string() const;
 };
 }
