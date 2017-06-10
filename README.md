@@ -87,13 +87,16 @@ Operation       | Description
 `m.at(n)`       | Access the n-th row of the matrix as a constant
 `m.at(n, x)`    | Access the element at row n and col x as a constant
 `m * v`         | Multiply matrix `m` with vector `v`
+`m * a`         | Multiply matrix `m` with matrix `a`
+`m * s`         | Multiply matrix `m` with scalar `s`
+`-m`            | Negate matrix `m`
 `a + b`         | Add the matrices
 `a - b`         | Subtract the matrices
 `a.equal(b, e)` | Tests if the matrix `a` is equal to `b` with the accuary `e`
 `a == b`        | Tests if the matrix `a` is equal to `b`
 `a != b`        | Tests if the matrix `a` is not equal to `b`
-`a.width()`     | Get the number of matrix cols
-`a.height()`    | Get the number of matrix rows
+`a.colCount()`     | Get the number of matrix cols
+`a.rowCount()`    | Get the number of matrix rows
 `a.to_string()` | Generate a string representation of the matrix
 
 ## What is planned?
