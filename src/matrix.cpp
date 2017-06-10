@@ -163,3 +163,29 @@ TMath::Vector TMath::Matrix::operator*(const Vector& a) const {
 
 	return result;
 }
+
+// Multiply a matrix with a matrix;
+TMath::Matrix TMath::Matrix::operator*(const Matrix& a) const {
+	if (a.rowCount() != colCount()) throw TMath::DIMENSION_ERROR;
+
+	// pre compute cols
+	std::vector<Vector> cols;
+	for (int i = 0; i < a.colCount(); i++) {
+		cols.push_back(a.col(i));
+	}
+
+	// pre compute rows
+	std::vector<Vector> rows;
+	for (int i = 0; i < rowCount(); i++) {
+		rows.push_back(row(i));
+	}
+
+	Matrix result(rowCount(), a.colCount());
+	for (int i = 0; i < rowCount(); i++) {
+		for (int j = 0; j < a.colCount(); j++) {
+			result[i][j] = rows[i].dot(cols[j]);
+		}
+	}
+
+	return result;
+}
