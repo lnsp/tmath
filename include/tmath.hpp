@@ -106,7 +106,7 @@ public:
 class Matrix {
 private:
 	std::vector<std::vector<DOUBLE>> elements;
-	std::pair<size_t, size_t> validate(const Matrix&) const;
+	std::pair<int, int> validate(const Matrix&) const;
 public:
 	Matrix(std::initializer_list<std::initializer_list<DOUBLE>>);
 	Matrix(const int& width, const int& height);
@@ -117,8 +117,9 @@ public:
 	bool operator!=(const Matrix&) const;
 	Matrix operator+(const Matrix&) const;
 	Matrix operator-(const Matrix&) const;
-	size_t width() const;
-	size_t height() const;
+	Vector operator*(const Vector&) const;
+	int width() const;
+	int height() const;
 	std::string to_string() const;
 };
 }
