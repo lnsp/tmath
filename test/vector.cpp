@@ -107,5 +107,10 @@ int main(int argc, char const *argv[]) {
 	assert(normVector1.norm(), normedVector1, "norm({2, 2, 1}) == {2/3, 2/3, 1/3}");
 	assertError([&](){ smallVector.norm(); }, "norm(Vector(0))");
 
+	// check at operation
+	assertError([&](){ smallVector.at(1); }, "Can not access element at index Vector(0)[1]");
+	assert(nullVector1.at(0), 0, "Vector(0)[0] == 0");
+	assert(identityVector2.at(1), 1, "Identity[1] == 1");
+
 	return 0;
 }
