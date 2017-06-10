@@ -98,5 +98,14 @@ int main(int argc, char const *argv[]) {
 	assert(valueMatrix3 * identityMatrix, valueMatrix3, "1x3 * Identity == 1x3");
 	assert(identityMatrix * valueMatrix4, valueMatrix4, "Identity * 3x1 == 3x1");
 
+	// Check for matrix * scalar and -matrix
+	assert(identityMatrix * 2.0, valueMatrix, "Identity * 2 == {{2, 0, 0}, {0, 2, 0}, {0, 0, 2}}");
+	assert(nullMatrix1 * 0.0, nullMatrix1, "{{0}} * 0 == {{0}}");
+	assert(nullMatrix1 * 1.0, nullMatrix1, "{{0}} * 1 == {{0}}");
+	assert(identityMatrix * -1.0, reverseMatrix, "-Identity == Reverse");
+	assert(valueMatrix * 0.5, identityMatrix, "0.5 * {{2, 0, 0}, {0, 2, 0}, {0, 0, 2}} == Identity");
+	assert(-identityMatrix, reverseMatrix, "-Identity == Reverse");
+	assert(-nullMatrix1, nullMatrix1, "-{{0}} == {{0}}");
+
 	return 0;
 }
