@@ -141,6 +141,14 @@ std::string TMath::Matrix::to_string() const {
 	return stream.str();
 }
 
+TMath::Matrix TMath::Matrix::operator*(const DOUBLE& a) const {
+	Matrix result(*this);
+	for (int i = 0; i < rowCount(); i++) {
+		result[i] = result[i] * a;
+	}
+	return result;
+}
+
 // Multiply a matrix with a vector.
 TMath::Vector TMath::Matrix::operator*(const Vector& a) const {
 	int w = colCount(), wv = a.dim(), h = rowCount();

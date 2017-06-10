@@ -124,6 +124,7 @@ public:
 	Matrix operator+(const Matrix&) const;
 	Matrix operator-(const Matrix&) const;
 	Vector operator*(const Vector&) const;
+	Matrix operator*(const DOUBLE&) const;
 	Matrix operator*(const Matrix&) const;
 	int rowCount() const;
 	int colCount() const;
