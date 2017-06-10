@@ -74,5 +74,12 @@ int main(int argc, char const *argv[]) {
 	assert(nullMatrix1.at(0, 0), 0, "Matrix(1, 1)[0, 0] == 0");
 	assert(identityMatrix.at(2, 2), 1, "Identity[2, 2] == 1");
 
+	// Check for matrix * vector
+	assertError([&](){ nullMatrix2 * oneVector2; }, "Can not multiply Matrix(1, 1) with Vector(3)");
+	assert(nullMatrix1 * oneVector1, nullVector1, "Matrix(1, 1) * Vector{1} == Vector{0}");
+	assert(nullMatrix1 * nullVector1, nullVector1, "Matrix(1, 1) * Vector{0} == Vector{0}");
+	assert(identityMatrix * countVector, countVector, "Identity * Vector{1, 2, 3} == Vector{1, 2, 3}");
+	assert(reverseMatrix * countVector, -countVector, "ReverseIdentity * Vector{1, 2, 3} == Vector{-1, -2, -3}");
+
 	return 0;
 }
