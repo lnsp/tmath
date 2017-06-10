@@ -12,6 +12,8 @@ void assert(TMath::DOUBLE value, TMath::DOUBLE correct, std::string expression);
 void assert(TMath::DOUBLE value, TMath::DOUBLE correct, std::string expression, TMath::DOUBLE tolerance);
 void assert(TMath::Matrix a, TMath::Matrix b, std::string expression);
 void assert(TMath::Matrix a, TMath::Matrix b, std::string expression, TMath::DOUBLE tolerance);
+void assert(TMath::Vector a, TMath::Vector b, std::string expression);
+void assert(TMath::Vector a, TMath::Vector b, std::string expression, TMath::DOUBLE tolerance);
 void assertTrue(bool b, std::string expression);
 void assertError(std::function<void ()>, std::string expression);
 }
