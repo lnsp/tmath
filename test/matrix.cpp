@@ -67,10 +67,13 @@ int main(int argc, char const *argv[]) {
 	assert(identityMatrix - reverseMatrix, valueMatrix, "Identity - (-Identity) = 2*Identity");
 
 	// Check for at
-	assertError([&](){ nullMatrix1.at(2); }, "Can not access index out of matrix Matrix(1, 1)[2]");
+	assertError([&](){ nullMatrix1.row(2); }, "Can not access index out of matrix Matrix(1, 1)[2]");
+	assertError([&](){ nullMatrix1.col(2); }, "Can not access index out of matrix Matrix(1, 1)[2]");
 	assertError([&](){ nullMatrix2.at(2, 2); }, "Can not access index out of matrix {{0}}[2, 2]");
-	assert(nullMatrix1.at(0), nullVector1, "Matrix(1, 1)[0] == Vector{0}");
-	assert(identityMatrix.at(0), oneVector2, "Identity[0] == Vector{1, 0, 0}");
+	assert(nullMatrix1.row(0), nullVector1, "Matrix(1, 1)[0] == Vector{0}");
+	assert(nullMatrix1.col(0), nullVector1, "Matrix(1, 1)[0] == Vector{0}");
+	assert(identityMatrix.row(0), oneVector2, "Identity[0] == Vector{1, 0, 0}");
+	assert(identityMatrix.col(0), oneVector2, "Identity[0] == Vector{1, 0, 0}");
 	assert(nullMatrix1.at(0, 0), 0, "Matrix(1, 1)[0, 0] == 0");
 	assert(identityMatrix.at(2, 2), 1, "Identity[2, 2] == 1");
 

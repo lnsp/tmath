@@ -39,14 +39,24 @@ std::pair<int, int> TMath::Matrix::validate(const Matrix& m) const {
 
 // Access a matrix row.
 TMath::Vector& TMath::Matrix::operator[](const int& i) {
-	if (i >= height()) throw BAD_OPERATION;
+	if (i >= height() || i < 0) throw BAD_OPERATION;
 	return elements[i];
 }
 
 // Access a matrix row as a constant.
-TMath::Vector TMath::Matrix::at(const int& i) const {
+TMath::Vector TMath::Matrix::row(const int& i) const {
 	if (i >= height() || i < 0) throw BAD_OPERATION;
 	return elements[i];
+}
+
+// Access a matrix col as a constant.
+TMath::Vector TMath::Matrix::col(const int& j) const {
+	if (j >= width() || j < 0) throw BAD_OPERATION;
+	Vector column(height());
+	for (int i = 0; i < height(); i++) {
+		column[i] = at(i, j);
+	}
+	return column;
 }
 
 // Access a matrix item as a constant.

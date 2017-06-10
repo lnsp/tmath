@@ -114,7 +114,8 @@ public:
 	Matrix(const int& width, const int& height);
 	Matrix(const Matrix& m);
 	Vector& operator[](const int&);
-	Vector at(const int&) const;
+	Vector col(const int&) const;
+	Vector row(const int&) const;
 	DOUBLE at(const int&, const int&) const;
 	bool equal(const Matrix&, const DOUBLE&) const;
 	bool operator==(const Matrix&) const;
@@ -122,6 +123,7 @@ public:
 	Matrix operator+(const Matrix&) const;
 	Matrix operator-(const Matrix&) const;
 	Vector operator*(const Vector&) const;
+	Matrix operator*(const Matrix&) const;
 	int width() const;
 	int height() const;
 	std::string to_string() const;
