@@ -134,7 +134,7 @@ std::string TMath::Matrix::to_string() const {
 // Multiply a matrix with a vector.
 TMath::Vector TMath::Matrix::operator*(const Vector& a) const {
 	int w = width(), wv = a.dim(), h = height();
-	if (w != h) throw TMath::DIMENSION_ERROR;
+	if (w != wv) throw TMath::DIMENSION_ERROR;
 
 	Vector result(h);
 	for (int i = 0; i < h; i++) {
