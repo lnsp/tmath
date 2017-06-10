@@ -114,6 +114,8 @@ public:
 	Matrix(const int& width, const int& height);
 	Matrix(const Matrix& m);
 	Vector& operator[](const int&);
+	Vector at(const int&) const;
+	DOUBLE at(const int&, const int&) const;
 	bool equal(const Matrix&, const DOUBLE&) const;
 	bool operator==(const Matrix&) const;
 	bool operator!=(const Matrix&) const;

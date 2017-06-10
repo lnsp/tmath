@@ -42,6 +42,16 @@ TMath::Vector& TMath::Matrix::operator[](const int& i) {
 	return elements[i];
 }
 
+// Access a matrix row as a constant.
+TMath::Vector TMath::Matrix::at(const int& i) const {
+	return elements[i];
+}
+
+// Access a matrix item as a constant.
+TMath::DOUBLE TMath::Matrix::at(const int& i, const int& j) const {
+	return elements[i].at(j);
+}
+
 // Test if the matrices are equal or nearly equal as specificed by the epsilon.
 bool TMath::Matrix::equal(const Matrix& m, const DOUBLE& eps) const {
 	std::pair<int, int> dimensions = validate(m);
