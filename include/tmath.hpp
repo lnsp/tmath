@@ -20,6 +20,7 @@ const DOUBLE EQUAL_EPSILON = 1e-7;
 // Mismatched dimensions error for vectors and matrices
 const std::string DIMENSION_ERROR = "Mismatched dimensions";
 const std::string EMPTY_MATRIX_ERROR = "Empty matrix";
+const std::string OUT_OF_BOUNDS = "Index out of bounds";
 // Error if the operation is not applicable
 const std::string BAD_OPERATION = "Operation is not applicable";
 // Vector length is equal to zero
