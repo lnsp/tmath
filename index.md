@@ -1,5 +1,4 @@
-# TMath [![Build status](https://travis-ci.org/lnsp/tmath.svg?branch=stable)](https://travis-ci.org/lnsp/tmath)
-A small math function collection based on the Taylor expansion series.
+[![Build status](https://travis-ci.org/lnsp/tmath.svg?branch=stable)](https://travis-ci.org/lnsp/tmath)
 
 ## Building the project
 - Download the source files from the `master`-tree
@@ -62,6 +61,7 @@ To initialize a new vector just use initializer lists (like `Vector {1, 2, 3}`) 
 Operation       | Description
 --------------- | -------------------------------------------------------------
 `a[n]`          | Access the n-th element of the vector `a`
+`a.at(n)`       | Access the n-th element of the vector `a` as a constant
 `a + b`         | Adds vector `a` and `b`
 `a - b`         | Subtracts vector `a` from `b`
 `a * s`         | Scales the vector by the factor `s`
@@ -76,7 +76,27 @@ Operation       | Description
 `a.dim()`       | Dimensions of vector `a`
 `a.to_string()` | Generates a string representation of the vector `a`
 
+### Matrix class
+To initialize a new matrix you can use initializer lists (like `Matrix{{1, 0}, {0, 1}}`) or create a null-matrix using `Matrix(x, y)` (where x is the number of cols and y the number of rows).
+
+Operation       | Description
+--------------- | -------------------------------------------------------------
+`m[n]`          | Access the n-th row of the matrix
+`m[n][x]`       | Access the element at row n and col x
+`m.at(n)`       | Access the n-th row of the matrix as a constant
+`m.at(n, x)`    | Access the element at row n and col x as a constant
+`m * v`         | Multiply matrix `m` with vector `v`
+`m * a`         | Multiply matrix `m` with matrix `a`
+`m * s`         | Multiply matrix `m` with scalar `s`
+`-m`            | Negate matrix `m`
+`a + b`         | Add the matrices
+`a - b`         | Subtract the matrices
+`a.equal(b, e)` | Tests if the matrix `a` is equal to `b` with the accuary `e`
+`a == b`        | Tests if the matrix `a` is equal to `b`
+`a != b`        | Tests if the matrix `a` is not equal to `b`
+`a.colCount()`     | Get the number of matrix cols
+`a.rowCount()`    | Get the number of matrix rows
+`a.to_string()` | Generate a string representation of the matrix
+
 ## What is planned?
-- Statistics (planned for v0.3)
-- Matrices (planned for v0.3)
-- Matrix operations (planned for v0.3)
+- Statistics
