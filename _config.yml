@@ -1,0 +1,8 @@
+title: TMath
+description: A small math library based on Taylor series approximations.
+google_analytics: 
+show_downloads: true
+theme: jekyll-theme-architect
+
+gems:
+  - jekyll-mentions
