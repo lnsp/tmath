@@ -130,6 +130,7 @@ public:
 	int rowCount() const;
 	int colCount() const;
 	std::string to_string() const;
+	static Matrix identity(const int&);
 };
 }
 

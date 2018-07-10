@@ -98,6 +98,8 @@ Operation       | Description
 `a.colCount()`     | Get the number of matrix cols
 `a.rowCount()`    | Get the number of matrix rows
 `a.to_string()` | Generate a string representation of the matrix
+`identity(n)` | Generates an identity matrix of dimension `n`
 
 ## What is planned?
 - Statistics
+- Numerics (e.g. solvers for ODE/PDE/LS)
