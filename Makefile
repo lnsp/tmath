@@ -11,6 +11,10 @@ IDIR=include
 TDIR=test
 # library directory
 LDIR=lib
+# example source directory
+EDIR=examples
+# example bin directory
+EBIN=examples/bin
 
 # generated library path
 LIB=$(LDIR)/libtmath.a
@@ -44,6 +48,12 @@ tests: folders utils $(TESTS)
 utils:
 	$(CC) $(INC) $(CFLAGS) -c -o $(TUTILS_OBJ) $(TDIR)/test_utils.cpp
 
+$(EBIN):
+	@mkdir -p $(EBIN)
+
+$(EDIR): $(EBIN) lib
+	$(CC) $(INC) $(CFLAGS) -o $(EBIN)/gauss $(EDIR)/gauss-method/main.cpp $(LIB)
+
 # build and run tests
 $(ODIR)/test_%.o: $(TDIR)/%.cpp
 	$(CC) $(INC) $(CFLAGS) -o $@ $< $(TUTILS_OBJ) $(LIB)
@@ -59,5 +69,5 @@ $(LIB): $(OBJECTS)
 	
 # make clean
 clean:
-	@rm -rf $(BDIR) $(ODIR) $(LDIR)
+	@rm -rf $(BDIR) $(ODIR) $(LDIR) $(EBIN)
 	@echo "workspace cleaned."
