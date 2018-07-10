@@ -15,6 +15,7 @@ int main(int argc, char const *argv[]) {
 
 	Matrix nullMatrix1(1, 1);
 	Matrix nullMatrix2{{0}};
+	Matrix oneMatrix{{1}};
 	Matrix identityMatrix{{1, 0, 0}, {0, 1, 0}, {0, 0, 1}};
 	Matrix reverseMatrix{{-1, 0, 0}, {0, -1, 0}, {0, 0, -1}};
 	Matrix valueMatrix{{2, 0, 0}, {0, 2, 0}, {0, 0, 2}};
@@ -106,6 +107,10 @@ int main(int argc, char const *argv[]) {
 	assert(valueMatrix * 0.5, identityMatrix, "0.5 * {{2, 0, 0}, {0, 2, 0}, {0, 0, 2}} == Identity");
 	assert(-identityMatrix, reverseMatrix, "-Identity == Reverse");
 	assert(-nullMatrix1, nullMatrix1, "-{{0}} == {{0}}");
+
+	// Check for matrix identity
+	assert(identityMatrix, Matrix::identity(3), "Identity(3) = {{1, 0, 0}, {0, 1, 0}, {0, 0, 1}}");
+	assert(oneMatrix, Matrix::identity(1), "Identity(1) = {{1}}");
 
 	return 0;
 }

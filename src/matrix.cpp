@@ -194,3 +194,9 @@ TMath::Matrix TMath::Matrix::operator*(const Matrix& a) const {
 
 	return result;
 }
+
+TMath::Matrix TMath::Matrix::identity(const int& d) {
+	TMath::Matrix id(d, d);
+	for (int i = 0; i < d; i++) id[i][i] = 1.;
+	return id;
+}
