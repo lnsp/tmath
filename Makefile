@@ -53,6 +53,7 @@ $(EBIN):
 
 $(EDIR): $(EBIN) lib
 	$(CC) $(INC) $(CFLAGS) -o $(EBIN)/gauss $(EDIR)/gauss-method/main.cpp $(LIB)
+	$(CC) $(INC) $(CFLAGS) -o $(EBIN)/jacobi $(EDIR)/jacobi-iteration/main.cpp $(LIB)
 
 # build and run tests
 $(ODIR)/test_%.o: $(TDIR)/%.cpp
